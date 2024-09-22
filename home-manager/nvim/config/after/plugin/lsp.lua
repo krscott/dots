@@ -21,7 +21,15 @@ local function with_defaults(settings)
 end
 
 lsp.bashls.setup(defaults)
-lsp.clangd.setup(defaults)
+
+lsp.clangd.setup(with_defaults {
+  -- https://old.reddit.com/r/neovim/comments/12qbcua/multiple_different_client_offset_encodings/jgpqxsp/
+  cmd = {
+    "clangd",
+    "--offset-encoding=utf-16",
+  }
+})
+
 lsp.cssls.setup(defaults)
 
 lsp.eslint.setup(with_defaults {
