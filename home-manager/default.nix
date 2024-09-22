@@ -1,9 +1,10 @@
-{ pkgs, inputs, config, ... }:
+{ pkgs, ... }:
 {
   imports = [
     ./core.nix
     ./gui.nix
     ./wsl.nix
+    ./secrets.nix
 
     ./theme/catppuccin.nix
 
@@ -16,24 +17,9 @@
     ./zsh
 
     ./scripts
-
-    # sops secret management
-    inputs.sops-nix.homeManagerModules.sops
   ];
 
-  sops = {
-    defaultSopsFile = ../secrets/secrets.yaml;
-    defaultSopsFormat = "yaml";
-    age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
-    secrets = {
-      openai_api_key.path = "%r/secrets/openai_api_key.txt";
-    };
-  };
-
   home.packages = with pkgs; [
-    # Secret management
-    sops
-
     # CLI
     neofetch
     tldr

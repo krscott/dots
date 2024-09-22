@@ -2,6 +2,7 @@ local chatgpt = require("chatgpt")
 
 -- https://github.com/jackMort/ChatGPT.nvim/blob/main/lua/chatgpt/config.lua
 chatgpt.setup({
+    api_key_cmd = "get_openai_api_key",
     -- popup_input = {
     --     submit = "<CR>"
     -- },

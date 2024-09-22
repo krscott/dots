@@ -33,5 +33,6 @@ ndev() {
 type direnv > /dev/null && eval "$(direnv hook zsh)"
 type zoxide > /dev/null && eval "$(zoxide init --cmd cd zsh)"
 
-export OPENAI_API_KEY="$(cat $XDG_RUNTIME_DIR/secrets/openai_api_key.txt)"
+
+# export OPENAI_API_KEY="$(cat $XDG_RUNTIME_DIR/secrets/openai_api_key.txt)"
 
