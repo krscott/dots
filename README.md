@@ -18,3 +18,11 @@ To derive a config from this config (like for work or something), start with
 - Switch tmux to zellij?
 - Switch vim to nixvim?
 
+## Secrets setup
+
+```
+mkdir -p ~/.config/sops/age
+nix shell nixpkgs#age -c age-keygen -o ~/.config/sops/age/keys.txt
+# (Paste key into .sops.yaml)
+sops secrets/secrets.yaml
+```
