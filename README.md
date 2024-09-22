@@ -18,6 +18,22 @@ To derive a config from this config (like for work or something), start with
 - Switch tmux to zellij?
 - Switch vim to nixvim?
 
+## Enter key fixes
+
+Some terminals have trouble with modfiers. See:
+- https://stackoverflow.com/questions/16359878/how-to-map-shift-enter
+- https://github.com/microsoft/terminal/issues/530#issuecomment-755917602
+
+tldr for windows, add this to terminal settings json:
+```json
+{ "command": {"action": "sendInput", "input": "\u001b[13;2u" }, "keys": "shift+enter" },
+{ "command": {"action": "sendInput", "input": "\u001b[13;5u" }, "keys": "ctrl+enter" },
+{ "command": {"action": "sendInput", "input": "\u001b[13;6u" }, "keys": "ctrl+shift+enter" },
+{ "command": {"action": "sendInput", "input": "\u001b[32;2u" }, "keys": "shift+space" },
+{ "command": {"action": "sendInput", "input": "\u001b[32;5u" }, "keys": "ctrl+space" },
+{ "command": {"action": "sendInput", "input": "\u001b[32;6u" }, "keys": "ctrl+shift+space" },
+```
+
 ## Secrets setup
 
 ```
