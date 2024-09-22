@@ -5,6 +5,7 @@
     ./gui.nix
     ./wsl.nix
     ./secrets.nix
+    ./cloud-ai.nix
 
     ./theme/catppuccin.nix
 

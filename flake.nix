@@ -55,6 +55,7 @@
             ./home-manager
             ./users/kris.nix
             {
+              krs.cloudAi.enable = true;
               krs.kitty.enable = true;
             }
           ];
@@ -68,6 +69,7 @@
             ./users/kris.nix
             {
               krs.wsl.enable = true;
+              krs.cloudAi.enable = true;
             }
           ];
         };

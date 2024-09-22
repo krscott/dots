@@ -12,6 +12,10 @@ let
   };
 in
 {
+  imports = [
+    ./nvim-cloud-ai.nix
+  ];
+
   programs.neovim = {
     enable = true;
 
@@ -20,10 +24,6 @@ in
 
     plugins = with pkgs.vimPlugins; [
       vim-sensible
-
-      # AI
-      # codeium-nvim
-      ChatGPT-nvim
 
       # Nav/UI
       harpoon
@@ -82,7 +82,6 @@ in
     ];
 
     extraPackages = with pkgs; [
-      codeium
       tree-sitter
       nodejs
 
