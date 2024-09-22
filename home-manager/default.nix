@@ -26,7 +26,7 @@
     defaultSopsFormat = "yaml";
     age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
     secrets = {
-      openai_api_key = {};
+      openai_api_key.path = "%r/secrets/openai_api_key.txt";
     };
   };
 
