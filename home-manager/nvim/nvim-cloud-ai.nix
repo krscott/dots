@@ -5,6 +5,8 @@
       plugins = with pkgs.vimPlugins; [
         # codeium-nvim
         ChatGPT-nvim
+
+        nui-nvim # required by ChatGPT-nvim
       ];
 
       # extraPackages = with pkgs; [

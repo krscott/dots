@@ -32,7 +32,6 @@ in
       undotree
       vim-tmux-navigator
       which-key-nvim
-      nui-nvim # required by ChatGPT-nvim
 
       # Editing
       nvim-autopairs
