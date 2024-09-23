@@ -18,7 +18,7 @@ nix flake update
 if is_git_dirty; then
 	./switch-home.sh
 	git add flake.lock
-	git commit -m "Update flake.nix"
+	git commit -m "Update flake.lock"
 else
 	echo "Flake already up-to-date"
 fi
