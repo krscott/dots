@@ -10,9 +10,10 @@ if (wk_exists) then
     })
 end
 
+require('overseer').setup()
+
 local dap = require('dap')
 local dapui = require('dapui')
-
 dapui.setup()
 
 dap.listeners.before.attach.dapui_config = function()
@@ -63,29 +64,28 @@ dap.adapters.lldb = {
     name = "lldb",
     type = "executable",
     command = "lldb",
-    args = { "-i", "dap" },
 }
 
-dap.configurations.c = {
-    {
-        name = "Launch",
-        type = "gdb",
-        request = "launch",
-        program = function()
-            return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-        end,
-        cwd = "${workspaceFolder}",
-        stopAtBeginningOfMainSubprogram = false,
-        args = function()
-            local args = {}
-            while true do
-                local arg = vim.fn.input('Arg (empty to stop): ')
-                if string.len(arg) == 0 then
-                    break
-                end
-                table.insert(args, arg)
-            end
-            return args
-        end,
-    },
-}
+-- dap.configurations.c = {
+--     {
+--         name = "Launch",
+--         type = "gdb",
+--         request = "launch",
+--         program = function()
+--             return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+--         end,
+--         cwd = "${workspaceFolder}",
+--         stopAtBeginningOfMainSubprogram = false,
+--         args = function()
+--             local args = {}
+--             while true do
+--                 local arg = vim.fn.input('Arg (empty to stop): ')
+--                 if string.len(arg) == 0 then
+--                     break
+--                 end
+--                 table.insert(args, arg)
+--             end
+--             return args
+--         end,
+--     },
+-- }
