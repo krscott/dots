@@ -78,6 +78,7 @@ in
       nvim-dap-ui
       nvim-nio # Required by nvim-dap-ui
       telescope-dap-nvim
+      nvim-dap-virtual-text
       overseer-nvim  # For .vscode/*.json support
     ];
 
