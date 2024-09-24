@@ -1,6 +1,6 @@
 { config }:
 c:
-  if (builtins.elem c config.krs.fonts.wideChars) then
+  if (config.krs.fonts.isWideChar c) then
     c + " "
   else
     c

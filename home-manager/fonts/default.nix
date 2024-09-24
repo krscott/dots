@@ -5,8 +5,8 @@
       default = [ "JetBrainsMono" "Iosevka" "FantasqueSansMono" "DroidSansMono" ];
       description = "Enabled Nerd Fonts";
     };
-    wideChars = lib.mkOption {
-      default = [ "✘" "󰏗" "" "" ];
+    isWideChar = lib.mkOption {
+      default = c: builtins.elem c [ "✘" "󰏗" "" "" ];
       description = "Characters that should be padded when displayed";
     };
   };
