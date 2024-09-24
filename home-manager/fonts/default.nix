@@ -1,9 +1,13 @@
 { config, pkgs, lib, ... }:
 {
-  options = {
-    krs.fonts.nerdfonts = lib.mkOption {
+  options.krs.fonts = {
+    nerdfonts = lib.mkOption {
       default = [ "JetBrainsMono" "Iosevka" "FantasqueSansMono" "DroidSansMono" ];
       description = "Enabled Nerd Fonts";
+    };
+    wideChars = lib.mkOption {
+      default = [ "✘" "󰏗" "" "" ];
+      description = "Characters that should be padded when displayed";
     };
   };
 

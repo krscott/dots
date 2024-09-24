@@ -1,4 +1,7 @@
-{ ... }:
+{ config, ... }:
+let
+  wc = import ../fonts/wide-char.nix { inherit config; };
+in
 {
   programs.starship = {
     enable = true;
@@ -20,21 +23,21 @@
         symbol = "";
       };
       git_status = {
-        ahead = "⇡ ";
-        behind = "⇣ ";
-        diverged = "⇕ ";
-        deleted = "✘ ";
+        ahead = wc "⇡";
+        behind = wc "⇣";
+        diverged = wc "⇕";
+        deleted = wc "✘";
       };
       package = {
         format = "[$symbol$version]($style) ";
-        symbol = "󰏗 ";
+        symbol = wc "󰏗";
       };
       python = {
-        symbol = " ";
+        symbol = wc "";
       };
       rust = {
         format = "[$symbol$version]($style) ";
-        symbol = " ";
+        symbol = wc "";
       };
       cmd_duration = {
         format = "[$duration]($style) ";

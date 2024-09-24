@@ -9,6 +9,8 @@ in
   };
 
   config = lib.mkIf config.krs.wsl.enable {
+    krs.fonts.wideChars = lib.mkDefault [ "✘" "󰏗" "" "" "⇡" "⇣" "⇕" ];
+
     home.packages = with pkgs; [
       nautilus
       # wslu
