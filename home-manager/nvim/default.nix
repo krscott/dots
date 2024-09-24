@@ -78,6 +78,7 @@ in
       nvim-dap-ui
       nvim-nio # Required by nvim-dap-ui
       telescope-dap-nvim
+      overseer-nvim  # For .vscode/*.json support
     ];
 
     extraPackages = with pkgs; [
