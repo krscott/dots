@@ -1,6 +1,6 @@
-{ lib, config, ... }:
+{ config, ... }:
 let
-  inherit (import ../fonts/nerd-char.nix { inherit config; }) wc nc;
+  nc = import ../fonts/nerd-char.nix { inherit config; };
 in
 {
   programs.starship = {
@@ -23,10 +23,10 @@ in
         symbol = "";
       };
       git_status = {
-        ahead = wc "⇡" "^";
-        behind = wc "⇣" "v";
-        diverged = wc "⇕" "%";
-        deleted = wc "✘" "X";
+        ahead = nc "⇡" "^";
+        behind = nc "⇣" "v";
+        diverged = nc "⇕" "%";
+        deleted = nc "✘" "X";
       };
       package = {
         format = "[$symbol$version]($style) ";

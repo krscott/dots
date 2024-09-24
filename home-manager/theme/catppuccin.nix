@@ -1,6 +1,6 @@
 { pkgs, config, ... }:
 let
-  inherit (import ../fonts/nerd-char.nix { inherit config; }) nc;
+  nc = import ../fonts/nerd-char.nix { inherit config; };
 
   # Mocha palette
   # https://github.com/catppuccin/starship/blob/ee9763c6bd3c5bada9de23678b4e4e33b01e71ae/palettes/mocha.toml

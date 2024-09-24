@@ -1,21 +1,26 @@
 { config, pkgs, lib, ... }:
+let
+  krslib = import ../../lib/krslib.nix { inherit lib; };
+in
 {
-  options.krs.fonts = {
-    nerdfonts = lib.mkOption {
-      default = [ "JetBrainsMono" "Iosevka" "FantasqueSansMono" "DroidSansMono" ];
+  options.krs.nerdfonts = {
+    enable = krslib.mkEnableOptionTrue "nerdfonts";
+    fonts = lib.mkOption {
+      default = [
+        "JetBrainsMono"
+        "Iosevka"
+        "IosevkaTerm"
+        "FantasqueSansMono"
+        "DroidSansMono"
+      ];
       description = "Enabled Nerd Fonts";
-    };
-    nerdCharMode = lib.mkOption {
-      type = lib.types.enum [ "narrow" "wide" "disabled" ];
-      default = "narrow";
-      description = "How to display nerdfont special characters";
     };
   };
 
   config = {
     home.packages = with pkgs; [
       (nerdfonts.override {
-        fonts = config.krs.fonts.nerdfonts;
+        fonts = config.krs.nerdfonts.fonts;
       })
       ubuntu_font_family
       liberation_ttf

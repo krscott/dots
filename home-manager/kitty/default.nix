@@ -9,7 +9,7 @@ in
 
   options.krs.kitty = {
     enable = krslib.mkEnableOptionFalse "kitty";
-    # Font must also be added to krs.fonts.nerdfonts in fonts.nix
+    # Font must also be added to fonts.nix
     # fontName = krslib.mkStrOption "Font Name" "FantasqueSansM Nerd Font";
     fontName = krslib.mkStrOption "Font Name" "Iosevka Nerd Font";
     fontSize = krslib.mkIntOption "Font Size" 16;
