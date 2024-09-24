@@ -5,9 +5,10 @@
       default = [ "JetBrainsMono" "Iosevka" "FantasqueSansMono" "DroidSansMono" ];
       description = "Enabled Nerd Fonts";
     };
-    isWideChar = lib.mkOption {
-      default = c: builtins.elem c [ "✘" "󰏗" "" "" ];
-      description = "Characters that should be padded when displayed";
+    nerdCharMode = lib.mkOption {
+      type = lib.types.enum [ "narrow" "wide" "disabled" ];
+      default = "narrow";
+      description = "How to display nerdfont special characters";
     };
   };
 

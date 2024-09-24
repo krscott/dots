@@ -1,6 +1,6 @@
-{ config, ... }:
+{ lib, config, ... }:
 let
-  wc = import ../fonts/wide-char.nix { inherit config; };
+  inherit (import ../fonts/nerd-char.nix { inherit config; }) wc nc;
 in
 {
   programs.starship = {
@@ -23,21 +23,21 @@ in
         symbol = "";
       };
       git_status = {
-        ahead = wc "⇡";
-        behind = wc "⇣";
-        diverged = wc "⇕";
-        deleted = wc "✘";
+        ahead = wc "⇡" "^";
+        behind = wc "⇣" "v";
+        diverged = wc "⇕" "%";
+        deleted = wc "✘" "X";
       };
       package = {
         format = "[$symbol$version]($style) ";
-        symbol = wc "󰏗";
+        symbol = nc "󰏗 " "pkg ";
       };
       python = {
-        symbol = wc "";
+        symbol = nc " " "py ";
       };
       rust = {
         format = "[$symbol$version]($style) ";
-        symbol = wc "";
+        symbol = nc " " "rs ";
       };
       cmd_duration = {
         format = "[$duration]($style) ";

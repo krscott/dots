@@ -9,7 +9,7 @@ in
   };
 
   config = lib.mkIf config.krs.wsl.enable {
-    krs.fonts.isWideChar = lib.mkDefault (c: true);
+    krs.fonts.nerdCharMode = lib.mkDefault "wide";
 
     home.packages = with pkgs; [
       nautilus

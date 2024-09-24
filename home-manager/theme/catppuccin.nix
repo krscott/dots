@@ -1,5 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 let
+  inherit (import ../fonts/nerd-char.nix { inherit config; }) nc;
+
   # Mocha palette
   # https://github.com/catppuccin/starship/blob/ee9763c6bd3c5bada9de23678b4e4e33b01e71ae/palettes/mocha.toml
   color = {
@@ -68,6 +70,9 @@ in
         # Make tabs display window name instead of default (current directory)
         set -g @catppuccin_window_default_text "#W"
         set -g @catppuccin_window_current_text "#W"
+        set -g @catppuccin_status_left_separator "${nc "" "█"}"
+        set -g @catppuccin_application_icon "${nc "" "$"}"
+        set -g @catppuccin_session_icon "${nc "" ">" }"
       '';
     }
   ];
