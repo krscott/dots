@@ -68,8 +68,11 @@
             ./home-manager
             ./users/kris.nix
             {
-              krs.wsl.enable = true;
-              krs.cloudAi.enable = true;
+              krs = {
+                wsl.enable = true;
+                cloudAi.enable = true;
+                git.useSystemSsh = true;
+              };
             }
           ];
         };
