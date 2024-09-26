@@ -17,22 +17,36 @@ in
     };
   };
 
-  config = {
-    home.packages = with pkgs; [
-      (nerdfonts.override {
-        fonts = config.krs.nerdfonts.fonts;
-      })
-      ubuntu_font_family
-      liberation_ttf
-    ];
+  config =
+    let
+      normalFonts = with pkgs; [
+        ubuntu_font_family
+        liberation_ttf
+      ];
 
-    fonts.fontconfig = {
-      enable = true;
-      defaultFonts = {
-        monospace = [ "Iosevka Nerd Font" ];
-        sansSerif = [ "Liberation Sans" ];
-        serif = [ "Liberation Serif" ];
+      nerdfonts = if (config.krs.nerdfonts.enable)
+        then [
+            (pkgs.nerdfonts.override {
+              fonts = config.krs.nerdfonts.fonts;
+            })
+          ]
+        else
+          [];
+    in
+    {
+      home.packages = normalFonts ++ nerdfonts;
+
+      fonts.fontconfig = {
+        enable = true;
+        defaultFonts = {
+          monospace = [
+            (if config.krs.nerdfonts.enable
+              then "Iosevka Nerd Font"
+              else "Liberation Mono")
+          ];
+          sansSerif = [ "Liberation Sans" ];
+          serif = [ "Liberation Serif" ];
+        };
       };
     };
-  };
 }
