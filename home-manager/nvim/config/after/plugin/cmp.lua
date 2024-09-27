@@ -47,13 +47,13 @@ cmp.setup({
                     vim.defer_fn(function() luasnip.jump(1) end, 0)
                 end
             elseif is_cusor_at_beginning_of_line() then
+                -- TODO Should I send a <Tab> here instead of calling fallback?
                 fallback()
             elseif luasnip.expand_or_locally_jumpable() then
                 luasnip.expand_or_jump()
                 -- elseif vim.fn.pumvisible() == 1 then
                 --   feedkey("<C-n>")
             else
-                debug_message("d")
                 fallback()
             end
         end, { "i", "s" }),
