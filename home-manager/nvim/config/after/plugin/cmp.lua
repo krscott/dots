@@ -1,8 +1,16 @@
 -- see also: lsp-zero.lua
 
-local has_words_before = function()
-    local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-    return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+-- local function debug_message(msg)
+--     vim.api.nvim_echo({ { msg, 'Normal' } }, false, {})
+-- end
+
+local function is_cusor_at_beginning_of_line()
+    -- Check if the cursor is at the beginning of the line or only whitespace is to the left
+    local line = vim.api.nvim_get_current_line()
+    local col = vim.fn.col('.') - 1 -- Adjust because col('.') returns 1-indexed value
+    local line_to_cursor = line:sub(1, col)
+
+    return col == 0 or line_to_cursor:match("^%s*$")
 end
 
 local luasnip = require("luasnip")
@@ -38,11 +46,14 @@ cmp.setup({
                 if luasnip.locally_jumpable(1) then
                     vim.defer_fn(function() luasnip.jump(1) end, 0)
                 end
+            elseif is_cusor_at_beginning_of_line() then
+                fallback()
             elseif luasnip.expand_or_locally_jumpable() then
                 luasnip.expand_or_jump()
                 -- elseif vim.fn.pumvisible() == 1 then
                 --   feedkey("<C-n>")
             else
+                debug_message("d")
                 fallback()
             end
         end, { "i", "s" }),
