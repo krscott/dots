@@ -5,6 +5,7 @@ wk.add({
     { "<leader>g", group = "git" },
     { "<leader>p", group = "project" },
     { "<leader>v", group = "void-register" },
+    { "<leader>?", group = "help" },
 })
 
 wk.add({
