@@ -47,8 +47,8 @@ cmp.setup({
                     vim.defer_fn(function() luasnip.jump(1) end, 0)
                 end
             elseif is_cusor_at_beginning_of_line() then
-                -- TODO Should I send a <Tab> here instead of calling fallback?
-                fallback()
+                -- Send a real tab key. fallback() would trigger tabout
+                vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Tab>', true, false, true), 'n', true)
             elseif luasnip.expand_or_locally_jumpable() then
                 luasnip.expand_or_jump()
                 -- elseif vim.fn.pumvisible() == 1 then
