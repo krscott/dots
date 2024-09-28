@@ -48,3 +48,15 @@ vim.keymap.set(
 -- Cringe
 vim.keymap.set("i", "<C-c>", "<Esc>")
 vim.keymap.set("n", "Q", "<nop>")
+
+-- Tabs/Spaces
+vim.keymap.set("n",
+    "<leader>c2",
+    "<cmd>set tabstop=2 shiftwidth=2 expandtab<cr><cmd>retab<cr>",
+    { desc = "Set tab to 2 spaces" }
+)
+vim.keymap.set("n",
+    "<leader>c4",
+    "<cmd>set tabstop=4 shiftwidth=4 expandtab<cr><cmd>retab<cr>",
+    { desc = "Set tab to 4 spaces" }
+)
