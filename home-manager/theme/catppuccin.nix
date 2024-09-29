@@ -66,6 +66,7 @@ in
     {
       plugin = pkgs.tmuxPlugins.catppuccin;
       extraConfig = ''
+        set -g @catppuccin_status_modules_right "application session battery date_time"
         set -g @catppuccin_flavour 'mocha' # latte, frappe, macchiato, mocha
         # Make tabs display window name instead of default (current directory)
         set -g @catppuccin_window_default_text "#W"
@@ -75,6 +76,8 @@ in
         set -g @catppuccin_session_icon "${nc "" ">" }"
       '';
     }
+    # pkgs.tmuxPlugins.battery # load after catppuccin
+    (import ../tmux/tmux-battery.nix { inherit pkgs; })
   ];
 
   programs.bat = {
