@@ -44,6 +44,12 @@ vim.keymap.set(
     [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
     { desc = "Replace word" }
 )
+vim.keymap.set(
+    "v",
+    "<leader>s",
+    [[y:%s/\<<C-r>"\>/<C-r>"/gI<Left><Left><Left>]],
+    { desc = "Replace selection" }
+)
 
 -- Cringe
 vim.keymap.set("i", "<C-c>", "<Esc>")
