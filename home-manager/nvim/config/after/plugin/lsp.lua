@@ -119,6 +119,7 @@ lsp.efm.setup {
     languages = {
       -- python = { { formatCommand = "black -", formatStdin = true }, },
       sh = { { formatCommand = "shfmt -ci -s -bn", formatStdin = true }, },
+      nix = { { formatCommand = "alejandra -qq", formatStdin = true }, },
     }
   },
   on_attach = lsp_format.on_attach,

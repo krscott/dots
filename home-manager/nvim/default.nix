@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-let
+{pkgs, ...}: let
   # TODO: Why did I buildVimPlugin instead of using vimPlugins.nvim-nio ?
   nvim-nio = pkgs.vimUtils.buildVimPlugin {
     name = "nvim-nio";
@@ -10,8 +9,7 @@ let
       sha256 = "0y3afl42z41ymksk29al5knasmm9wmqzby860x8zj0i0mfb1q5k5";
     };
   };
-in
-{
+in {
   imports = [
     ./nvim-cloud-ai.nix
   ];
@@ -79,7 +77,7 @@ in
       nvim-nio # Required by nvim-dap-ui
       telescope-dap-nvim
       nvim-dap-virtual-text
-      overseer-nvim  # For .vscode/*.json support
+      overseer-nvim # For .vscode/*.json support
     ];
 
     extraPackages = with pkgs; [
@@ -111,6 +109,7 @@ in
       # Lua
       lua-language-server
       # Nix
+      alejandra
       nil
       nixpkgs-fmt
       statix
