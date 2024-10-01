@@ -37,7 +37,7 @@ vim.keymap.set("n", "<leader>Y", "\"+Y", { desc = "Yank line to clipboard" })
 vim.keymap.set("n", "<Esc>", "<cmd>noh<cr>")
 vim.keymap.set("n", "<C-c>", "<cmd>noh<cr>")
 
--- Replace word under cursor
+-- Find/replace under cursor
 vim.keymap.set(
     "n",
     "<leader>s",
@@ -49,6 +49,12 @@ vim.keymap.set(
     "<leader>s",
     [[y:%s/\<<C-r>"\>/<C-r>"/gI<Left><Left><Left>]],
     { desc = "Replace selection" }
+)
+vim.keymap.set(
+    "n",
+    "<leader>S",
+    [[yiwgv:s/\<<C-r>"\>/<C-r>"/gI<Left><Left><Left>]],
+    { desc = "Replace word in last selection" }
 )
 
 -- Cringe
