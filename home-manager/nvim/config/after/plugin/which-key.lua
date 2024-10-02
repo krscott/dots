@@ -4,6 +4,7 @@ wk.add({
     { "<leader>c", group = "code" },
     { "<leader>g", group = "git" },
     { "<leader>p", group = "project" },
+    { "<leader>r", group = "replace" },
     { "<leader>v", group = "void-register" },
     { "<leader>?", group = "help" },
 })
