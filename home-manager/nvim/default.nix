@@ -22,6 +22,7 @@ in {
 
     plugins = with pkgs.vimPlugins; [
       vim-sensible
+      obsidian-nvim
 
       # Nav/UI
       harpoon
