@@ -47,7 +47,7 @@ vim.keymap.set(
 vim.keymap.set(
     "v",
     "<leader>s",
-    [[y:%s/\<<C-r>"\>/<C-r>"/gI<Left><Left><Left>]],
+    [[y:%s/<C-r>"/<C-r>"/gI<Left><Left><Left>]],
     { desc = "Replace selection" }
 )
 vim.keymap.set(
