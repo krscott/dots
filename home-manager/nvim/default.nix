@@ -111,6 +111,7 @@ in {
       lua-language-server
       # Nix
       alejandra
+      nixfmt-rfc-style
       nil
       nixpkgs-fmt
       statix

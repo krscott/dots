@@ -87,7 +87,15 @@ lsp.lua_ls.setup(with_defaults {
   }
 })
 
-lsp.nil_ls.setup(defaults)
+lsp.nil_ls.setup(with_defaults {
+  settings = {
+    ['nil'] = {
+      formatting = {
+        command = { "nixfmt" },
+      },
+    },
+  },
+})
 lsp.pyright.setup(with_defaults {
   settings = {
     pyright = {
@@ -119,7 +127,7 @@ lsp.efm.setup {
     languages = {
       -- python = { { formatCommand = "black -", formatStdin = true }, },
       sh = { { formatCommand = "shfmt -ci -s -bn", formatStdin = true }, },
-      nix = { { formatCommand = "alejandra -qq", formatStdin = true }, },
+      -- nix = { { formatCommand = "alejandra -qq", formatStdin = true }, },
     }
   },
   on_attach = lsp_format.on_attach,
