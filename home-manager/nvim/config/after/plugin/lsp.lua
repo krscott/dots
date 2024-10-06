@@ -93,6 +93,12 @@ lsp.nil_ls.setup(with_defaults {
       formatting = {
         command = { "nix-any-fmt" },
       },
+      nix = {
+        flake = {
+          -- calls `nix flake archive` to put a flake and its output to store
+          autoArchive = true,
+        },
+      },
     },
   },
 })
