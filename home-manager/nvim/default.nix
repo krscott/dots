@@ -9,6 +9,23 @@
       sha256 = "0y3afl42z41ymksk29al5knasmm9wmqzby860x8zj0i0mfb1q5k5";
     };
   };
+
+  # Script that uses the flake's formatter
+  nix-any-fmt = pkgs.writeShellScriptBin "nix-any-fmt" ''
+    formatter_path=$(nix build --json --dry-run --no-link .#formatter.x86_64-linux 2>/dev/null | jq -r '.[].outputs.out')
+
+    if [ -z "$formatter_path" ]; then
+        exit 1
+    fi
+
+    binary_name=$(ls $formatter_path/bin/)
+
+    if [ -z "$binary_name" ]; then
+        exit 1
+    fi
+
+    "$formatter_path/bin/$binary_name" "$@"
+  '';
 in {
   imports = [
     ./nvim-cloud-ai.nix
@@ -110,8 +127,8 @@ in {
       # Lua
       lua-language-server
       # Nix
+      nix-any-fmt
       alejandra
-      nixfmt-rfc-style
       nil
       nixpkgs-fmt
       statix

@@ -91,11 +91,12 @@ lsp.nil_ls.setup(with_defaults {
   settings = {
     ['nil'] = {
       formatting = {
-        command = { "nixfmt" },
+        command = { "nix-any-fmt" },
       },
     },
   },
 })
+
 lsp.pyright.setup(with_defaults {
   settings = {
     pyright = {
