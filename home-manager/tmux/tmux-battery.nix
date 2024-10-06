@@ -1,4 +1,4 @@
-{ pkgs }:
+{pkgs}:
 pkgs.tmuxPlugins.battery.overrideAttrs (prev: {
   version = "unstable-2024-09-29";
   src = pkgs.fetchFromGitHub {

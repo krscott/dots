@@ -25,16 +25,25 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, nixGL, ... } @ inputs:
-    let
-      mkHome = {username, system, modules}:
-        let
-          pkgs = nixpkgs.legacyPackages.${system};
-        in
-        home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          extraSpecialArgs = { inherit inputs; };
-          modules = modules ++ [
+  outputs = {
+    nixpkgs,
+    home-manager,
+    nixGL,
+    ...
+  } @ inputs: let
+    mkHome = {
+      username,
+      system,
+      modules,
+    }: let
+      pkgs = nixpkgs.legacyPackages.${system};
+    in
+      home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        extraSpecialArgs = {inherit inputs;};
+        modules =
+          modules
+          ++ [
             {
               nix.package = pkgs.nix;
               home = {
@@ -43,49 +52,50 @@
               };
             }
           ];
-        };
-    in
-    {
-      homeConfigurations = {
-        "kris@ubuntu-nix.styx" = mkHome {
-          username = "kris";
-          system = "x86_64-linux";
-          modules = [
-            ./hosts/styx/styx-home.nix
-            ./home-manager
-            ./users/kris.nix
-            {
-              krs.cloudAi.enable = true;
-              krs.kitty.enable = true;
-            }
-          ];
-        };
-
-        "kris@galatea" = mkHome {
-          username = "kris";
-          system = "x86_64-linux";
-          modules = [
-            ./home-manager
-            ./users/kris.nix
-            {
-              krs = {
-                wsl.enable = true;
-                cloudAi.enable = true;
-                git.useSystemSsh = true;
-              };
-            }
-          ];
-        };
-
-        "clear" = mkHome {
-          username = "kris";
-          system = "x86_64-linux";
-          modules = [
-            ./home-manager/core.nix
-          ];
-        };
+      };
+  in {
+    homeConfigurations = {
+      "kris@ubuntu-nix.styx" = mkHome {
+        username = "kris";
+        system = "x86_64-linux";
+        modules = [
+          ./hosts/styx/styx-home.nix
+          ./home-manager
+          ./users/kris.nix
+          {
+            krs.cloudAi.enable = true;
+            krs.kitty.enable = true;
+          }
+        ];
       };
 
-      inherit nixGL;
+      "kris@galatea" = mkHome {
+        username = "kris";
+        system = "x86_64-linux";
+        modules = [
+          ./home-manager
+          ./users/kris.nix
+          {
+            krs = {
+              wsl.enable = true;
+              cloudAi.enable = true;
+              git.useSystemSsh = true;
+            };
+          }
+        ];
+      };
+
+      "clear" = mkHome {
+        username = "kris";
+        system = "x86_64-linux";
+        modules = [
+          ./home-manager/core.nix
+        ];
+      };
     };
+
+    inherit nixGL;
+
+    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
+  };
 }

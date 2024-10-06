@@ -1,8 +1,11 @@
-{ config, lib, pkgs, ... }:
-let
-  krslib = import ../lib/krslib.nix { inherit lib; };
-in
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
+  krslib = import ../lib/krslib.nix {inherit lib;};
+in {
   options.krs.guiApps.enable = krslib.mkEnableOptionFalse "guiApps";
 
   config = lib.mkIf config.krs.guiApps.enable {
@@ -19,7 +22,7 @@ in
     };
 
     home.packages = with pkgs; [
-      emote  # Emoji picker
+      emote # Emoji picker
       obsidian
     ];
   };

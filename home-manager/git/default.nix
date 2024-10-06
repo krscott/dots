@@ -1,5 +1,9 @@
-{ pkgs, lib, config, ... }:
 {
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   options.krs.git.useSystemSsh = lib.mkOption {
     type = lib.types.bool;
     description = ''
@@ -19,7 +23,7 @@
 
       git = {
         enable = true;
-        package = pkgs.gitFull;  # Includes gitk
+        package = pkgs.gitFull; # Includes gitk
         extraConfig = {
           init = {
             defaultBranch = "main";
@@ -50,15 +54,17 @@
 
       lazygit.enable = true;
 
-      zsh.initExtra = if config.krs.git.useSystemSsh then ''
-        export GIT_SSH=`which ssh`
-      '' else "";
+      zsh.initExtra =
+        if config.krs.git.useSystemSsh
+        then ''
+          export GIT_SSH=`which ssh`
+        ''
+        else "";
     };
 
     # home.shellAliases = {
     #   gs = "git stuats";
     #   gl = "lazygit";
     # };
-
   };
 }

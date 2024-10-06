@@ -1,8 +1,11 @@
-{ config, pkgs, lib, ... }:
-let
-  krslib = import ../../lib/krslib.nix { inherit lib; };
-in
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
+  krslib = import ../../lib/krslib.nix {inherit lib;};
+in {
   imports = [
     ../../lib/nixgl.nix
   ];
@@ -15,7 +18,7 @@ in
     fontSize = krslib.mkIntOption "Font Size" 16;
   };
 
-  config = lib.mkIf config.krs.kitty.enable ({
+  config = lib.mkIf config.krs.kitty.enable {
     home.shellAliases = {
       # Install kitty terminfo on servers
       #s = "kitty +kitten ssh";
@@ -28,5 +31,5 @@ in
       font.size = config.krs.kitty.fontSize;
       extraConfig = builtins.readFile ./kitty.conf;
     };
-  });
+  };
 }

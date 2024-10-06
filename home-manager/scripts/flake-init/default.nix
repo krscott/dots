@@ -1,5 +1,9 @@
-{ pkgs, lib, config, ... }:
-let
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: let
   direnv = "${pkgs.direnv}/bin/direnv";
   cp = "cp --no-preserve=mode,ownership";
 
@@ -21,7 +25,6 @@ let
     # EOF
   '';
 in {
-
   config = lib.mkIf config.programs.direnv.enable {
     home.packages = [
       flake-init

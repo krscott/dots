@@ -1,8 +1,6 @@
-{ config, ... }:
-let
-  nc = import ../fonts/nerd-char.nix { inherit config; };
-in
-{
+{config, ...}: let
+  nc = import ../fonts/nerd-char.nix {inherit config;};
+in {
   programs.starship = {
     enable = true;
     settings = {
@@ -15,7 +13,6 @@ in
         style = "purple";
       };
       directory = {
-
       };
       git_branch = {
         format = "[$symbol$branch(:$remote_branch)]($style) ";

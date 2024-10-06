@@ -26,16 +26,20 @@
     nixGL,
     personal-config,
     ...
-  } @ inputs:
-    let
-      mkHome = {username, system, modules}:
-        let
-          pkgs = nixpkgs.legacyPackages.${system};
-        in
-        home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          extraSpecialArgs = { inherit inputs; };
-          modules = modules ++ [
+  } @ inputs: let
+    mkHome = {
+      username,
+      system,
+      modules,
+    }: let
+      pkgs = nixpkgs.legacyPackages.${system};
+    in
+      home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        extraSpecialArgs = {inherit inputs;};
+        modules =
+          modules
+          ++ [
             (import "${personal-config}/home-manager/default.nix")
             {
               krs = {
@@ -49,20 +53,19 @@
               };
             }
           ];
-        };
-    in
-    {
-      homeConfigurations = {
-        "kscott@work-compy" = mkHome {
-          username = "kscott";
-          system = "x86_64-linux";
-          modules = [
-            (import "${personal-config}/hosts/work-la-ubuntu/home.nix")
-            ./users/kscott.nix
-          ];
-        };
       };
-
-      inherit nixGL;
+  in {
+    homeConfigurations = {
+      "kscott@work-compy" = mkHome {
+        username = "kscott";
+        system = "x86_64-linux";
+        modules = [
+          (import "${personal-config}/hosts/work-la-ubuntu/home.nix")
+          ./users/kscott.nix
+        ];
+      };
     };
+
+    inherit nixGL;
+  };
 }

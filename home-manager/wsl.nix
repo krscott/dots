@@ -1,8 +1,11 @@
-{ config, lib, pkgs, ... }:
-let
-  krslib = import ../lib/krslib.nix { inherit lib; };
-in
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
+  krslib = import ../lib/krslib.nix {inherit lib;};
+in {
   options.krs.wsl = {
     enable = krslib.mkEnableOptionFalse "wsl";
     home = krslib.mkStrOption "home" "/mnt/c/Users/kris";

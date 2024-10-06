@@ -1,5 +1,9 @@
-{ pkgs, lib, config, ... }:
 {
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   config = lib.mkIf config.krs.cloudAi.enable {
     programs.neovim = {
       plugins = with pkgs.vimPlugins; [

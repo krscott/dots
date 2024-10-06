@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   imports = [
     ./core.nix
     ./gui.nix
@@ -24,18 +23,16 @@
     # CLI
     neofetch
     tldr
-    dust    # du replacement
+    dust # du replacement
     jq
 
     # Rust
     rustc
     cargo
     gcc # Required for linking
-
   ];
 
   programs = {
-
     # CLI
     autorandr.enable = true;
     bat = {

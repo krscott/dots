@@ -1,10 +1,12 @@
-{ pkgs, inputs, ... }:
-let
+{
+  pkgs,
+  inputs,
+  ...
+}: let
   inherit (inputs) nixGL;
 
   gmc = "${inputs.gnome-monitor-config.packages."${pkgs.system}".default}/bin/gnome-monitor-config";
-in
-{
+in {
   nixGLPrefix = "${nixGL.packages.x86_64-linux.nixGLNvidia}/bin/nixGLNvidia-*";
 
   home.packages = with pkgs; [

@@ -1,6 +1,9 @@
-{ pkgs, config, ... }:
-let
-  nc = import ../fonts/nerd-char.nix { inherit config; };
+{
+  pkgs,
+  config,
+  ...
+}: let
+  nc = import ../fonts/nerd-char.nix {inherit config;};
 
   # Mocha palette
   # https://github.com/catppuccin/starship/blob/ee9763c6bd3c5bada9de23678b4e4e33b01e71ae/palettes/mocha.toml
@@ -32,8 +35,7 @@ let
     mantle = "#181825";
     crust = "#11111b";
   };
-in
-{
+in {
   programs.kitty.themeFile = "Catppuccin-Mocha";
 
   programs.neovim.plugins = [
@@ -73,11 +75,11 @@ in
         set -g @catppuccin_window_current_text "#W"
         set -g @catppuccin_status_left_separator "${nc "" "█"}"
         set -g @catppuccin_application_icon "${nc "" "$"}"
-        set -g @catppuccin_session_icon "${nc "" ">" }"
+        set -g @catppuccin_session_icon "${nc "" ">"}"
       '';
     }
     # pkgs.tmuxPlugins.battery # load after catppuccin
-    (import ../tmux/tmux-battery.nix { inherit pkgs; })
+    (import ../tmux/tmux-battery.nix {inherit pkgs;})
   ];
 
   programs.bat = {

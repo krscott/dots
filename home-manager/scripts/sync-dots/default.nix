@@ -1,5 +1,9 @@
-{ config, pkgs, lib, ... }:
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   config = lib.mkIf config.krs.wsl.enable (
     let
       home-dir = config.krs.wsl.home;
@@ -30,7 +34,7 @@
         fi
       '';
     in {
-      home.packages = [ sync-dots ];
+      home.packages = [sync-dots];
     }
   );
 }

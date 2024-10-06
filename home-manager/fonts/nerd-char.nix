@@ -1,6 +1,4 @@
-{ config }:
-str: alt:
-  if (config.krs.nerdfonts.enable)
-    then str
-    else alt
-
+{config}: str: alt:
+if (config.krs.nerdfonts.enable)
+then str
+else alt
