@@ -1,5 +1,5 @@
 {pkgs, ...}: let
-  # TODO: Why did I buildVimPlugin instead of using vimPlugins.nvim-nio ?
+  # TODO: Why buildVimPlugin instead of just using vimPlugins.nvim-nio ?
   nvim-nio = pkgs.vimUtils.buildVimPlugin {
     name = "nvim-nio";
     src = pkgs.fetchFromGitHub {
@@ -11,16 +11,21 @@
   };
 
   # Script that uses the flake's formatter
+  # Note: `nix eval --raw .#formatter.x86_64-linux` also works to find
+  #   formatter_path, but is slower
   nix-any-fmt = pkgs.writeShellScriptBin "nix-any-fmt" ''
-    formatter_path=$(nix build --json --dry-run --no-link .#formatter.x86_64-linux 2>/dev/null | jq -r '.[].outputs.out')
+    system="$(nix eval --impure --raw --expr 'builtins.currentSystem' 2>/dev/null)"
+    formatter_path=$(nix build --json --dry-run --no-link ".#formatter.$system" 2>/dev/null | jq -r '.[].outputs.out')
 
     if [ -z "$formatter_path" ]; then
+        echo >&2 "No formatter set in flake"
         exit 1
     fi
 
     binary_name=$(ls $formatter_path/bin/)
 
     if [ -z "$binary_name" ]; then
+        echo >&2 "No formatter binary found"
         exit 1
     fi
 
@@ -29,6 +34,10 @@
 in {
   imports = [
     ./nvim-cloud-ai.nix
+  ];
+
+  home.packages = [
+    nix-any-fmt
   ];
 
   programs.neovim = {
@@ -128,9 +137,7 @@ in {
       lua-language-server
       # Nix
       nix-any-fmt
-      alejandra
       nil
-      nixpkgs-fmt
       statix
       # Python
       pyright
