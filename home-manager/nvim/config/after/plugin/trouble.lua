@@ -13,10 +13,6 @@ vim.keymap.set("n", "<leader>xx",
     "<cmd>Trouble close<cr>",
     { desc = "Trouble: Close" }
 )
--- vim.keymap.set("n", "<leader>xw",
---     "<cmd>Trouble diagnostics toggle<cr>",
---     { desc = "Trouble: Workspace Diagnostics" }
--- )
 vim.keymap.set("n", "<leader>xd",
     "<cmd>Trouble diagnostics toggle<cr>",
     { desc = "Trouble: Diagnostics" }
