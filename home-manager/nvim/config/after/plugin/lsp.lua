@@ -91,7 +91,11 @@ lsp.nil_ls.setup(with_defaults {
   settings = {
     ['nil'] = {
       formatting = {
-        command = { "nix-any-fmt" },
+        command = {
+          "nix-any-fmt",
+          "-s",
+          "/tmp/nix-any-fmt." .. vim.fn.getpid() .. "." .. os.time(),
+        },
       },
       nix = {
         flake = {

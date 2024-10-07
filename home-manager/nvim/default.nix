@@ -14,20 +14,46 @@
   # Note: `nix eval --raw .#formatter.x86_64-linux` also works to find
   #   formatter_path, but is slower
   nix-any-fmt = pkgs.writeShellScriptBin "nix-any-fmt" ''
-    system="$(nix eval --impure --raw --expr 'builtins.currentSystem' 2>/dev/null)"
-    formatter_path=$(nix build --json --dry-run --no-link ".#formatter.$system" 2>/dev/null | jq -r '.[].outputs.out')
-
-    if [ -z "$formatter_path" ]; then
-        echo >&2 "No formatter set in flake"
-        exit 1
-    fi
-
-    nixfmt_binaries=( "$formatter_path"/bin/* )
-    nixfmt_binary="''${nixfmt_binaries[0]}"
+    while getopts ":s:" opt; do
+      case $opt in
+        s)
+          session_file="$OPTARG"
+          if [ -s "$session_file" ]; then
+            nixfmt_binary="$(cat "$session_file")"
+          fi
+          ;;
+        \?)
+          echo "Invalid option: -$OPTARG" >&2
+          exit 1
+          ;;
+        :)
+          echo "Option -$OPTARG requires an argument." >&2
+          exit 1
+          ;;
+      esac
+    done
+    shift $((OPTIND-1))
 
     if [ -z "$nixfmt_binary" ]; then
-        echo >&2 "No formatter nixfmt_binary found"
-        exit 1
+      system="$(nix eval --impure --raw --expr 'builtins.currentSystem' 2>/dev/null)"
+      formatter_path=$(nix build --json --dry-run --no-link ".#formatter.$system" 2>/dev/null | jq -r '.[].outputs.out')
+
+      if [ -z "$formatter_path" ]; then
+          echo >&2 "No formatter set in flake"
+          exit 1
+      fi
+
+      nixfmt_binaries=( "$formatter_path"/bin/* )
+      nixfmt_binary="''${nixfmt_binaries[0]}"
+
+      if [ -z "$nixfmt_binary" ]; then
+          echo >&2 "No formatter nixfmt_binary found"
+          exit 1
+      fi
+
+      if [ ! -z "$session_file" ]; then
+        echo "$nixfmt_binary" > "$session_file"
+      fi
     fi
 
     "$nixfmt_binary" "$@"
