@@ -22,14 +22,15 @@
         exit 1
     fi
 
-    binary_name=$(ls $formatter_path/bin/)
+    nixfmt_binaries=( "$formatter_path"/bin/* )
+    nixfmt_binary="''${nixfmt_binaries[0]}"
 
-    if [ -z "$binary_name" ]; then
-        echo >&2 "No formatter binary found"
+    if [ -z "$nixfmt_binary" ]; then
+        echo >&2 "No formatter nixfmt_binary found"
         exit 1
     fi
 
-    "$formatter_path/bin/$binary_name" "$@"
+    "$nixfmt_binary" "$@"
   '';
 in {
   imports = [
