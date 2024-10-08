@@ -41,3 +41,8 @@ opt.undofile = true
 
 -- Updates
 opt.updatetime = 50
+
+-- Suppress hit-enter prompts
+opt.shortmess = {
+    o = true
+}
