@@ -25,6 +25,7 @@ bindkey "^[[1;5C"            forward-word        # Ctrl+Right
 
 
 alias nsh="nix-shell --command zsh -p"
+alias ndev-sm="nix develop '.?submodules=1#' --command zsh"
 ndev() {
     # --command consumes all remaining args
     nix develop "$@" --command zsh
