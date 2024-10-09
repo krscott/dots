@@ -13,7 +13,7 @@ vim.keymap.set("v", "<Tab>", ">gv")
 vim.keymap.set("v", "<S-Tab>", "<gv")
 
 -- Keep cursor in-place when removing newline
-vim.keymap.set("n", "J", "mzJ`z")
+-- vim.keymap.set("n", "J", "mzJ`z")
 
 -- Keep cursor in center of screen when paging
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
