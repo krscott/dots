@@ -68,7 +68,7 @@
     la = "eza -a";
     ll = "eza -lah";
     cat = "bat -p";
-    direnv-init = "echo 'use flake . --impure' >> .envrc && direnv allow";
+    direnv-init = "echo \"use flake '.?submodules=1' --impure\" >> .envrc && direnv allow";
     start-ssh-agent = "eval `ssh-agent` && ssh-add";
   };
 
