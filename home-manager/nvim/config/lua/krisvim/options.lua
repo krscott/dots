@@ -8,9 +8,6 @@ local config_dir =
 opt.termguicolors = true
 opt.colorcolumn = "80"
 
--- Hide startup screen
-opt.shortmess = "I"
-
 -- Indents
 opt.autoindent = true
 opt.expandtab = true -- Use spaces instead of tabs
@@ -42,7 +39,10 @@ opt.undofile = true
 -- Updates
 opt.updatetime = 50
 
--- Suppress hit-enter prompts
+-- Shorten messages to reduce amount of hit-enter prompts
 opt.shortmess = {
-    o = true
+    a = true,
+    o = true,
+    -- Hide startup screen
+    I = true,
 }
