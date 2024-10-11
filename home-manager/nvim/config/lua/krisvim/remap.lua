@@ -78,3 +78,11 @@ vim.keymap.set("n",
     "<cmd>set tabstop=4 shiftwidth=4 expandtab<cr><cmd>retab<cr>",
     { desc = "Set tab to 4 spaces" }
 )
+
+-- Generate to-do comment
+vim.keymap.set(
+    "n",
+    "<leader>ct",
+    "OTODO(kscott) <esc><cmd>Commentary<cr>A",
+    { desc = "Insert TODO" }
+)
