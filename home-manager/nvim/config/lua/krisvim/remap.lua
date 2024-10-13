@@ -83,6 +83,6 @@ vim.keymap.set("n",
 vim.keymap.set(
     "n",
     "<leader>ct",
-    "OTODO(kscott) <esc><cmd>Commentary<cr>A",
+    "OTODO(kscott): <esc><cmd>Commentary<cr>A",
     { desc = "Insert TODO" }
 )
