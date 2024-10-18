@@ -36,6 +36,9 @@
           in {
             excludesFile = "${excludesFile}";
           };
+          push = {
+            useForceIfIncludes = true;
+          };
         };
         aliases = {
           s = "status -sb";
@@ -49,6 +52,7 @@
           l = "!lazygit";
           c = "clone --recursive";
           co = "checkout --recurse-submodules";
+          pf = "push --force-with-lease --force-if-includes";
           smu = "submodule update --recursive --init";
         };
       };
@@ -62,10 +66,5 @@
         ''
         else "";
     };
-
-    # home.shellAliases = {
-    #   gs = "git stuats";
-    #   gl = "lazygit";
-    # };
   };
 }
