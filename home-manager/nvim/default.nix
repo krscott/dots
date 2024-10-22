@@ -124,6 +124,7 @@ in {
       gleam-vim
       rustaceanvim
       cmake-tools-nvim
+      vim-jinja
 
       # Debugging
       nvim-dap
