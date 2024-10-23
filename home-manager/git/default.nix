@@ -41,18 +41,19 @@
           };
         };
         aliases = {
-          s = "status -sb";
-          lol = "log --graph --abbrev-commit --date-order --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'";
-          lola = "lol --all";
-          lol2 = "log --graph --abbrev-commit --date-order --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'";
-          lola2 = "lol2 --all";
+          c = "clone --recursive";
+          co = "checkout --recurse-submodules";
           dogs = "log --decorate --oneline --graph --stat";
           k = "!gitk --date-order";
           ka = "!gitk --all --date-order";
           l = "!lazygit";
-          c = "clone --recursive";
-          co = "checkout --recurse-submodules";
+          lol = "log --graph --abbrev-commit --date-order --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'";
+          lol2 = "log --graph --abbrev-commit --date-order --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'";
+          lola = "lol --all";
+          lola2 = "lol2 --all";
           pf = "push --force-with-lease --force-if-includes";
+          u = "!git pull && git submodule update --recursive --init";
+          s = "status -sb";
           smu = "submodule update --recursive --init";
         };
       };
