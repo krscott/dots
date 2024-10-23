@@ -25,10 +25,12 @@ bindkey "^[[1;5C"            forward-word        # Ctrl+Right
 
 
 alias nsh="nix-shell --command zsh -p"
-alias ndev-sm="nix develop '.?submodules=1#' --command zsh"
 ndev() {
-    # --command consumes all remaining args
-    nix develop "$@" --command zsh
+    if [ "$#" -eq 0 ]; then
+        nix develop '.?submodules=1#' --command zsh
+    else
+        nix develop "$@" --command zsh
+    fi
 }
 
 type direnv > /dev/null && eval "$(direnv hook zsh)"
