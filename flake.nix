@@ -14,7 +14,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixGL = {
+    nixgl = {
       url = "github:nix-community/nixGL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -28,7 +28,7 @@
   outputs = {
     nixpkgs,
     home-manager,
-    nixGL,
+    nixgl,
     ...
   } @ inputs: let
     mkHome = {
@@ -36,7 +36,10 @@
       system,
       modules,
     }: let
-      pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = import nixpkgs {
+        inherit system;
+        overlays = [ nixgl.overlay ];
+      };
     in
       home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
@@ -96,7 +99,7 @@
       };
     };
 
-    inherit nixGL;
+    nixGL = nixgl;
 
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
   };

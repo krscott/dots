@@ -6,9 +6,9 @@
 }: let
   krslib = import ../../lib/krslib.nix {inherit lib;};
 in {
-  imports = [
-    ../../lib/nixgl.nix
-  ];
+  # imports = [
+  #   ../../lib/nixgl.nix
+  # ];
 
   options.krs.kitty = {
     enable = krslib.mkEnableOptionFalse "kitty";
@@ -26,7 +26,8 @@ in {
 
     programs.kitty = {
       enable = true;
-      package = config.nixgl pkgs.kitty;
+      # package = config.nixgl pkgs.kitty;
+      package = config.lib.nixGL.wrap pkgs.kitty;
       font.name = config.krs.kitty.fontName;
       font.size = config.krs.kitty.fontSize;
       extraConfig = builtins.readFile ./kitty.conf;
