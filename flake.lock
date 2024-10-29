@@ -55,7 +55,7 @@
         "type": "github"
       }
     },
-    "nixGL": {
+    "nixgl": {
       "inputs": {
         "flake-utils": "flake-utils",
         "nixpkgs": [
@@ -112,7 +112,7 @@
       "inputs": {
         "gnome-monitor-config": "gnome-monitor-config",
         "home-manager": "home-manager",
-        "nixGL": "nixGL",
+        "nixgl": "nixgl",
         "nixpkgs": "nixpkgs",
         "sops-nix": "sops-nix"
       }
