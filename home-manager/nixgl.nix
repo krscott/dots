@@ -17,6 +17,7 @@ in {
 
   config = lib.mkIf config.krs.nixgl.enable {
     # https://nix-community.github.io/home-manager/index.xhtml#sec-usage-gpu-non-nixos
+    # https://nix-community.github.io/home-manager/options.xhtml#opt-nixGL.packages
     nixGL = {
       packages = nixgl.packages;
     };
