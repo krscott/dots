@@ -22,8 +22,7 @@ in {
 
     programs.kitty = {
       enable = true;
-      # package = config.nixgl pkgs.kitty;
-      package = config.krs.nixglWrap pkgs.kitty;
+      package = config.krs.nixgl.wrap pkgs.kitty;
       font.name = config.krs.kitty.fontName;
       font.size = config.krs.kitty.fontSize;
       extraConfig = builtins.readFile ./kitty.conf;

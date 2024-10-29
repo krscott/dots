@@ -5,17 +5,20 @@
   ...
 }: let
   inherit (inputs) nixgl;
-  noop = pkg: pkg;
+  krslib = import ../lib/krslib.nix {inherit lib;};
 in {
-  options.krs.nixglWrap = lib.mkOption {
-    default = noop;
-    example = config.lib.nixGL.wrap;
+  options.krs.nixgl = {
+    enable = krslib.mkEnableOptionFalse "nixgl";
+    wrap = lib.mkOption {
+      default = pkg: pkg;
+    };
   };
 
-  config = lib.mkIf (config.krs.nixglWrap != noop) {
+  config = lib.mkIf config.krs.nixgl.enable {
     # https://nix-community.github.io/home-manager/index.xhtml#sec-usage-gpu-non-nixos
     nixGL = {
       packages = nixgl.packages;
     };
+    krs.nixgl.wrap = config.lib.nixGL.wrap;
   };
 }

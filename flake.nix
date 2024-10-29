@@ -68,8 +68,11 @@
           ./home-manager
           ./users/kris.nix
           {
-            krs.cloudAi.enable = true;
-            krs.kitty.enable = true;
+            krs = {
+              cloudAi.enable = true;
+              kitty.enable = true;
+              nixgl.enable = true;
+            };
           }
         ];
       };

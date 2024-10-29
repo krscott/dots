@@ -1,13 +1,10 @@
 {
-  config,
   pkgs,
   inputs,
   ...
 }: let
   gmc = "${inputs.gnome-monitor-config.packages."${pkgs.system}".default}/bin/gnome-monitor-config";
 in {
-  krs.nixglWrap = config.lib.nixGL.wrap;
-
   home.packages = with pkgs; [
     xorg.xinput
     inputs.gnome-monitor-config.packages."${pkgs.system}".default
