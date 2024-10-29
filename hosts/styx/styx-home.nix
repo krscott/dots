@@ -1,19 +1,12 @@
 {
+  config,
   pkgs,
   inputs,
   ...
 }: let
-  inherit (inputs) nixgl;
-
   gmc = "${inputs.gnome-monitor-config.packages."${pkgs.system}".default}/bin/gnome-monitor-config";
 in {
-  # nixGLPrefix = "${nixgl.packages.x86_64-linux.nixGLNvidia}/bin/nixGLNvidia-*";
-
-  nixGL = {
-    packages = nixgl.packages;
-    # defaultWrapper = "nvidiaPrime";
-    # installScripts = [ "nvidiaPrime" ];
-  };
+  krs.nixglWrap = config.lib.nixGL.wrap;
 
   home.packages = with pkgs; [
     xorg.xinput

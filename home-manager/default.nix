@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./core.nix
+    ./nixgl-wrap.nix
     ./gui.nix
     ./wsl.nix
     ./secrets.nix
