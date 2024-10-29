@@ -1,5 +1,6 @@
 {
   config,
+  pkgs,
   lib,
   inputs,
   ...
@@ -20,5 +21,9 @@ in {
       packages = nixgl.packages;
     };
     krs.nixgl.wrap = config.lib.nixGL.wrap;
+
+    home.packages = [
+      pkgs.nixgl.auto.nixGLDefault
+    ];
   };
 }
