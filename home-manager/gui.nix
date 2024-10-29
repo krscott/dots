@@ -6,7 +6,9 @@
 }: let
   krslib = import ../lib/krslib.nix {inherit lib;};
 in {
-  options.krs.guiApps.enable = krslib.mkEnableOptionFalse "guiApps";
+  options.krs = {
+    guiApps.enable = krslib.mkEnableOptionFalse "guiApps";
+  };
 
   config = lib.mkIf config.krs.guiApps.enable {
     # Add app .desktop files to path
