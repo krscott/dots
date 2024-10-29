@@ -1,5 +1,5 @@
 local chatgpt_exists, chatgpt = pcall(require, "chatgpt")
-if (chatgpt_exists) then
+if (chatgpt_exists and os.getenv("KRS_NIX_SECRETS_ENABLE")) then
     -- https://github.com/jackMort/ChatGPT.nvim/blob/main/lua/chatgpt/config.lua
     chatgpt.setup({
         api_key_cmd = "get_openai_api_key",

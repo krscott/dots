@@ -85,9 +85,10 @@
           ./users/kris.nix
           {
             krs = {
-              wsl.enable = true;
               cloudAi.enable = true;
               git.useSystemSsh = true;
+              secrets.enable = true;
+              wsl.enable = true;
             };
           }
         ];
