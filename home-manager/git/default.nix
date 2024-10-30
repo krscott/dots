@@ -51,10 +51,11 @@
           lol2 = "log --graph --abbrev-commit --date-order --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'";
           lola = "lol --all";
           lola2 = "lol2 --all";
+          nuke = "!git submodule foreach --recursive git clean -xffd && git submodule foreach --recursive git reset --hard && git clean -xffd && git reset --hard && git submodule sync --recursive && git restore . --recurse-submodules";
           pf = "push --force-with-lease --force-if-includes";
-          u = "!git pull && git submodule update --recursive --init";
           s = "status -sb";
           smu = "submodule update --recursive --init";
+          u = "!git pull && git submodule update --recursive --init";
         };
       };
 
