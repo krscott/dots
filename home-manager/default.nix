@@ -1,11 +1,12 @@
 {pkgs, ...}: {
   imports = [
-    ./core.nix
-    ./nixgl.nix
-    ./gui.nix
-    ./wsl.nix
-    ./secrets.nix
     ./cloud-ai.nix
+    ./core.nix
+    ./gui.nix
+    ./nixgl.nix
+    ./secrets.nix
+    ./system-settings.nix
+    ./wsl.nix
 
     ./theme/catppuccin.nix
 

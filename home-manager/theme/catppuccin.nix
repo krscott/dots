@@ -5,6 +5,8 @@
 }: let
   nc = import ../fonts/nerd-char.nix {inherit config;};
 
+  battery = if config.krs.system.hasBattery then "battery" else "";
+
   # Mocha palette
   # https://github.com/catppuccin/starship/blob/ee9763c6bd3c5bada9de23678b4e4e33b01e71ae/palettes/mocha.toml
   color = {
@@ -68,7 +70,7 @@ in {
     {
       plugin = pkgs.tmuxPlugins.catppuccin;
       extraConfig = ''
-        set -g @catppuccin_status_modules_right "application session battery date_time"
+        set -g @catppuccin_status_modules_right "application session ${battery} date_time"
         set -g @catppuccin_flavour 'mocha' # latte, frappe, macchiato, mocha
         # Make tabs display window name instead of default (current directory)
         set -g @catppuccin_window_default_text "#W"
