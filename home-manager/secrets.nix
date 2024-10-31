@@ -6,7 +6,7 @@
   ...
 }: let
   krslib = import ../lib/krslib.nix {inherit lib;};
-in{
+in {
   imports = [
     inputs.sops-nix.homeManagerModules.sops
   ];
