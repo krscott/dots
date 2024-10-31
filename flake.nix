@@ -38,7 +38,7 @@
     }: let
       pkgs = import nixpkgs {
         inherit system;
-        overlays = [ nixgl.overlay ];
+        overlays = [nixgl.overlay];
       };
     in
       home-manager.lib.homeManagerConfiguration {
