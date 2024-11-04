@@ -1,15 +1,5 @@
 {pkgs, ...}: let
-  # TODO: Why buildVimPlugin instead of just using vimPlugins.nvim-nio ?
-  nvim-nio = pkgs.vimUtils.buildVimPlugin {
-    name = "nvim-nio";
-    src = pkgs.fetchFromGitHub {
-      owner = "nvim-neotest";
-      repo = "nvim-nio";
-      rev = "5800f585def265d52f1d8848133217c800bcb25d";
-      sha256 = "0y3afl42z41ymksk29al5knasmm9wmqzby860x8zj0i0mfb1q5k5";
-    };
-  };
-
+  # TODO(kscott): Move to separate sh file
   # Script that uses the flake's formatter
   # Note: `nix eval --raw .#formatter.x86_64-linux` also works to find
   #   formatter_path, but is slower
@@ -133,6 +123,9 @@ in {
       telescope-dap-nvim
       nvim-dap-virtual-text
       overseer-nvim # For .vscode/*.json support
+
+      neotest
+      neotest-gtest
     ];
 
     extraPackages = with pkgs; [
