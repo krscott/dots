@@ -88,3 +88,12 @@ vim.keymap.set(
     "<cmd>" .. switch_c_h_cmd .. "<cr>",
     { desc = "Go to .h/.c" }
 )
+
+-- Replace
+
+vim.keymap.set(
+    { "n", "v" },
+    "<leader>re",
+    [[:s/\v(\s*)(\w*)( =.*)?,/\1case \2:]],
+    { desc = "enum const -> case" }
+)
