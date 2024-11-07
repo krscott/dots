@@ -29,7 +29,9 @@ ndev() {
     if [ "$#" -eq 0 ]; then
         nix develop '.?submodules=1#' --command zsh
     else
-        nix develop "$@" --command zsh
+        target="$1"
+        shift
+        nix develop ".?submodules=1#$target" "$@" --command zsh
     fi
 }
 
