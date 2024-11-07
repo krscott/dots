@@ -149,6 +149,7 @@ in {
       shfmt
       # C
       clang
+      clang-tools
       # Gleam
       gleam
       # Go
