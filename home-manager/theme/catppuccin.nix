@@ -5,7 +5,10 @@
 }: let
   nc = import ../fonts/nerd-char.nix {inherit config;};
 
-  battery = if config.krs.system.hasBattery then "battery" else "";
+  battery =
+    if config.krs.system.hasBattery
+    then "battery"
+    else "";
 
   # Mocha palette
   # https://github.com/catppuccin/starship/blob/ee9763c6bd3c5bada9de23678b4e4e33b01e71ae/palettes/mocha.toml
