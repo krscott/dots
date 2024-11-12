@@ -79,10 +79,19 @@ vim.keymap.set("n",
     { desc = "Set tab to 4 spaces" }
 )
 
--- Generate to-do comment
+-- To-do comments
+local todo_user = os.getenv("TODO_USER") or "kscott"
+
 vim.keymap.set(
     "n",
     "<leader>ct",
-    "OTODO(kscott): <esc><cmd>Commentary<cr>A",
+    "OTODO(" .. todo_user .. "): <esc><cmd>Commentary<cr>A",
     { desc = "Insert TODO" }
+)
+
+vim.keymap.set(
+    "n",
+    "<leader>pm",
+    "<cmd>lua require('telescope.builtin').live_grep()<cr>TODO\\(" .. todo_user .. "\\)",
+    { desc = "Find my TODOs" }
 )
