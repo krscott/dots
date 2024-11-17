@@ -37,12 +37,20 @@
     rm .envrc
     rm -rf .direnv/
   '';
+
+  direnv-reload = pkgs.writeShellScriptBin "direnv-reload" ''
+    set -euo pipefail
+
+    rm -rf .direnv/
+    direnv allow
+  '';
 in {
   config = lib.mkIf config.programs.direnv.enable {
     home.packages = [
       direnv-init
       direnv-manual-init
       direnv-deinit
+      direnv-reload
     ];
   };
 }
