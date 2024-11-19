@@ -71,6 +71,7 @@
     ll = "eza -lah";
     cat = "bat -p";
     start-ssh-agent = "eval `ssh-agent` && ssh-add";
+    bell = "echo -n -e '\\a'";
   };
 
   home.sessionVariables = {
