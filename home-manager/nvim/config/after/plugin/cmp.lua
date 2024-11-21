@@ -41,11 +41,12 @@ cmp.setup({
             if cmp.visible() then
                 cmp.confirm()
 
+                -- Also jump
                 -- If this is done on same step, it deletes end paren.
                 -- So, delay by a tick
-                if luasnip.locally_jumpable(1) then
-                    vim.defer_fn(function() luasnip.jump(1) end, 0)
-                end
+                -- if luasnip.locally_jumpable(1) then
+                --     vim.defer_fn(function() luasnip.jump(1) end, 0)
+                -- end
             elseif is_cusor_at_beginning_of_line() then
                 -- Send a real tab key. fallback() would trigger tabout
                 vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Tab>', true, false, true), 'n', true)
