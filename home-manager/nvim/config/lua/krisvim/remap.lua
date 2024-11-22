@@ -95,3 +95,6 @@ vim.keymap.set(
     "<cmd>lua require('telescope.builtin').live_grep()<cr>TODO\\(" .. todo_user .. "\\)",
     { desc = "Find my TODOs" }
 )
+
+-- Restart LSP
+vim.keymap.set("n", "<leader>cr", "<cmd>LspRestart<cr>", { desc = "Restart LSP" })
