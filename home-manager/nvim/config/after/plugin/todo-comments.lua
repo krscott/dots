@@ -2,12 +2,12 @@ local todo_comments = require("todo-comments")
 
 todo_comments.setup({
     highlight = {
-        -- vimgrep regex, supporting the pattern T*DO(name):
-        pattern = [[.*<((KEYWORDS)%(\(.{-1,}\))?):]],
+        -- vimgrep regex, supporting the pattern T*DO(name)
+        pattern = [[.*<((KEYWORDS)%(\(.{-1,}\))?):?]],
     },
     search = {
-        -- ripgrep regex, supporting the pattern T*DO(name):
-        pattern = [[\b(KEYWORDS)(\(\w*\))*:]],
+        -- ripgrep regex, supporting the pattern T*DO(name)
+        pattern = [[\b(KEYWORDS)(\(\w*\))*\b]],
     }
 })
 
