@@ -157,6 +157,8 @@ in {
       gopls
       # Lua
       lua-language-server
+      # NASM
+      nasmfmt
       # Nix
       nix-any-fmt
       nil

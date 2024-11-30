@@ -138,6 +138,8 @@ lsp.efm.setup {
     languages = {
       -- python = { { formatCommand = "black -", formatStdin = true }, },
       sh = { { formatCommand = "shfmt -ci -s -bn", formatStdin = true }, },
+      -- TODO: How to use different formatters for different ASMs?
+      asm = { { formatCommand = "nasmfmt -ii 4 -", formatStdin = true }, },
       -- nix = { { formatCommand = "alejandra -qq", formatStdin = true }, },
     }
   },
