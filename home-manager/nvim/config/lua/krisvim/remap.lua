@@ -98,3 +98,12 @@ vim.keymap.set(
 
 -- Restart LSP
 vim.keymap.set("n", "<leader>cr", "<cmd>LspRestart<cr>", { desc = "Restart LSP" })
+
+
+-- Table Format
+vim.keymap.set(
+    "v",
+    "<leader>rt",
+    "<esc><cmd>'<,'>s/\\s*,\\s*/, /g<cr><cmd>'<,'>!column -t -s ',' -o ','<cr><cmd>'<,'>s/\\(\\s*\\),/,\\1/g<cr><cmd>'<,'>s/\\s*$//<cr>",
+    { desc = "Format Table" }
+)
