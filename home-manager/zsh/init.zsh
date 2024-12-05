@@ -39,5 +39,5 @@ type direnv > /dev/null && eval "$(direnv hook zsh)"
 type zoxide > /dev/null && eval "$(zoxide init --cmd cd zsh)"
 
 # fzf: Use tab to accept instead of enter
-zstyle ':fzf-tab:*' fzf-bindings 'tab:accept'
+# zstyle ':fzf-tab:*' fzf-bindings 'tab:accept'
 
