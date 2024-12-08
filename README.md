@@ -18,7 +18,20 @@ To derive a config from this config (like for work or something), start with
 - Switch tmux to zellij?
 - Switch vim to nixvim?
 
-## Enter key fixes
+## Extra setup
+
+Depending on the system, some other manual setup is required.
+
+### Linux Keyboard Shortcuts
+
+Add these to custom shortcuts
+
+```
+# Ctrl+Alt+K - Start kitty in tmux
+kitty -e tmux
+```
+
+### Enter key fixes
 
 Some terminals have trouble with modfiers. See:
 - https://stackoverflow.com/questions/16359878/how-to-map-shift-enter
@@ -34,7 +47,7 @@ tldr for windows, add this to terminal settings json:
 { "command": {"action": "sendInput", "input": "\u001b[32;6u" }, "keys": "ctrl+shift+space" },
 ```
 
-## Secrets setup
+### Secrets setup
 
 ```
 mkdir -p ~/.config/sops/age
