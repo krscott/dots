@@ -15,6 +15,25 @@
   };
 
   config = {
+    home.packages = [
+      (
+        pkgs.writeShellScriptBin "fetchme" ''
+          set -euo pipefail
+
+          if [ "$(git rev-parse --abbrev-ref HEAD)" = "$1" ]; then
+              git fetch origin "$1"
+              git reset --hard "origin/$1"
+          else
+              git fetch origin "$1:$1"
+              git checkout "$1"
+          fi
+
+          git branch --set-upstream-to="origin/$1" "$1"
+          git submodule update --init --recursive
+        ''
+      )
+    ];
+
     programs = {
       vim = {
         enable = true;
@@ -53,6 +72,7 @@
           lola2 = "lol2 --all";
           nuke = "!git submodule foreach --recursive git clean -xffd && git submodule foreach --recursive git reset --hard && git clean -xffd && git reset --hard && git submodule sync --recursive && git restore . --recurse-submodules";
           pf = "push --force-with-lease --force-if-includes";
+          prs = "pull --recurse-submodules --jobs=16";
           s = "status -sb";
           smu = "submodule update --recursive --init";
           u = "!git pull && git submodule update --recursive --init";
