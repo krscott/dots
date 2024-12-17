@@ -114,7 +114,8 @@ in {
       gleam-vim
       rustaceanvim
       cmake-tools-nvim
-      vim-jinja
+      # vim-jinja  # has annoying bugs with < >
+      jinja-vim
 
       # Debugging
       nvim-dap
