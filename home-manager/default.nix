@@ -10,6 +10,7 @@
 
     ./theme/catppuccin.nix
 
+    ./alacritty
     ./fonts
     ./git
     ./kitty
