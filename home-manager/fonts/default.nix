@@ -36,13 +36,14 @@ in {
     fonts.fontconfig = {
       enable = true;
       defaultFonts = {
-        monospace = [
-          (
-            if config.krs.nerdfonts.enable
-            then "Iosevka Nerd Font"
-            else "Liberation Mono"
-          )
-        ];
+        # monospace = [
+        #   (
+        #     if config.krs.nerdfonts.enable
+        #     then "Iosevka Nerd Font"
+        #     else "Liberation Mono"
+        #   )
+        # ];
+        monospace = ["Liberation Mono"];
         sansSerif = ["Liberation Sans"];
         serif = ["Liberation Serif"];
       };
