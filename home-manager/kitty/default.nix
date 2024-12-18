@@ -23,7 +23,8 @@ in {
 
     programs.kitty = {
       enable = true;
-      package = if config.krs.kitty.useSystem
+      package =
+        if config.krs.kitty.useSystem
         then pkgs.emptyDirectory
         else config.krs.nixgl.wrap pkgs.kitty;
       font.name = config.krs.kitty.fontName;
