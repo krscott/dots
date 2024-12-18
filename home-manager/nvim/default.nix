@@ -167,7 +167,6 @@ in {
       # Python
       pyright
       ruff
-      ruff-lsp
       # Rust
       rust-analyzer
       rustfmt
