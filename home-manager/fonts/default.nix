@@ -9,12 +9,12 @@ in {
   options.krs.nerdfonts = {
     enable = krslib.mkEnableOptionTrue "nerdfonts";
     fonts = lib.mkOption {
-      default = [
-        "JetBrainsMono"
-        "Iosevka"
-        "IosevkaTerm"
-        "FantasqueSansMono"
-        "DroidSansMono"
+      default = with pkgs.nerd-fonts; [
+        jetbrains-mono
+        iosevka
+        iosevka-term
+        fantasque-sans-mono
+        droid-sans-mono
       ];
       description = "Enabled Nerd Fonts";
     };
@@ -28,11 +28,7 @@ in {
 
     nerdfonts =
       if (config.krs.nerdfonts.enable)
-      then [
-        (pkgs.nerdfonts.override {
-          fonts = config.krs.nerdfonts.fonts;
-        })
-      ]
+      then config.krs.nerdfonts.fonts
       else [];
   in {
     home.packages = normalFonts ++ nerdfonts;
