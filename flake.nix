@@ -60,6 +60,23 @@
       };
   in {
     homeConfigurations = {
+      "kris@charon" = mkHome {
+        username = "kris";
+        system = "x86_64-linux";
+        modules = [
+          ./home-manager
+          ./users/kris.nix
+          {
+            krs = {
+              # cloudAi.enable = true;
+              git.useSystemSsh = true;
+              kitty.enable = true;
+              nixgl.enable = true;
+            };
+          }
+        ];
+      };
+
       "kris@ubuntu-nix.styx" = mkHome {
         username = "kris";
         system = "x86_64-linux";
