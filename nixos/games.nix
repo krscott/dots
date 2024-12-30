@@ -11,11 +11,18 @@ in {
   };
 
   config = lib.mkIf config.krs.games.enable {
+    # nixpkgs.overlays = [
+    #   # Temporary heroic electron fix
+    #   (final: prev: {
+    #     electron_31 = final.electron;
+    #   })
+    # ];
+
     environment.systemPackages = with pkgs; [
       mangohud
       lutris
-      heroic
-      bottles
+      # heroic
+      # bottles
 
       (writeShellScriptBin "protonup" ''
         set -eu
