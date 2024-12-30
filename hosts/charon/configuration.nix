@@ -1,3 +1,5 @@
+# charon - Framework 16 AMD GPU
+#
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
@@ -7,6 +9,7 @@
   ...
 }: {
   imports = [
+    inputs.nixos-hardware.nixosModules.framework-16-7040-amd
     /etc/nixos/hardware-configuration.nix
     ../../nixos
   ];
@@ -14,6 +17,9 @@
   krs = {
     games.enable = true;
   };
+
+  # Enables drivers for both X11 and Wayland
+  # services.xserver.videoDrivers = ["amdgpu"];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
