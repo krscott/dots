@@ -8,7 +8,12 @@
 }: {
   imports = [
     /etc/nixos/hardware-configuration.nix
+    ../../nixos
   ];
+
+  krs = {
+    games.enable = true;
+  };
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
