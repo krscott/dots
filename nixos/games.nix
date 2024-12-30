@@ -11,12 +11,11 @@ in {
   };
 
   config = lib.mkIf config.krs.games.enable {
-    # Enable OpenGL (already enabled if steam is enabled)
-    hardware.opengl.enable = true;
-
     environment.systemPackages = with pkgs; [
       mangohud
       lutris
+      heroic
+      bottles
 
       (writeShellScriptBin "protonup" ''
         set -eu
