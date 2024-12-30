@@ -32,7 +32,6 @@
     ...
   } @ inputs: let
     mkHome = {
-      username,
       system,
       modules,
     }: let
@@ -51,34 +50,22 @@
           ++ [
             {
               nix.package = pkgs.nix;
-              home = {
-                inherit username;
-                homeDirectory = "/home/${username}";
-              };
             }
           ];
       };
   in {
-    homeConfigurations = {
-      "kris@charon" = mkHome {
-        username = "kris";
-        system = "x86_64-linux";
+    nixosConfigurations = {
+      charon = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs;};
         modules = [
-          ./home-manager
-          ./users/kris.nix
-          {
-            krs = {
-              # cloudAi.enable = true;
-              git.useSystemSsh = true;
-              kitty.enable = true;
-              nixgl.enable = true;
-            };
-          }
+          ./hosts/charon/configuration.nix
+          home-manager.nixosModules.default
         ];
       };
+    };
 
+    homeConfigurations = {
       "kris@ubuntu-nix.styx" = mkHome {
-        username = "kris";
         system = "x86_64-linux";
         modules = [
           ./hosts/styx/styx-home.nix
@@ -96,7 +83,6 @@
       };
 
       "kris@galatea" = mkHome {
-        username = "kris";
         system = "x86_64-linux";
         modules = [
           ./home-manager
@@ -113,10 +99,10 @@
       };
 
       "clear" = mkHome {
-        username = "kris";
         system = "x86_64-linux";
         modules = [
           ./home-manager/core.nix
+          ./users/kris.nix
         ];
       };
     };
