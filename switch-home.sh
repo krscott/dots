@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 set -euo pipefail
+shopt -s failglob
 
 #SYSTEM=$(nix eval --impure --raw --expr 'builtins.currentSystem')
 
