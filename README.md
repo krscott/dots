@@ -3,7 +3,7 @@
 My home-manager nix config.
 
 ```sh
-./switch-home.sh
+./switch.sh
 ```
 
 ## Derived config
