@@ -26,6 +26,7 @@ in {
     home.packages = with pkgs; [
       emote # Emoji picker
       obsidian
+      keepass
     ];
   };
 }

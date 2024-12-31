@@ -32,6 +32,7 @@
         {
           krs = {
             # cloudAi.enable = true;
+            guiApps.enable = true;
             kitty.enable = true;
             secrets.enable = true;
             rclone.enable = true;
