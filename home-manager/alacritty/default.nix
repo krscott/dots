@@ -18,6 +18,9 @@ in {
       enable = true;
       package = config.krs.nixgl.wrap pkgs.alacritty;
       settings = {
+        general.import = [
+          "${./alacritty.toml}"
+        ];
         font = {
           size = config.krs.alacritty.fontSize;
           normal.family = config.krs.alacritty.fontName;
