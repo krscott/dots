@@ -10,7 +10,7 @@
 }: {
   imports = [
     inputs.nixos-hardware.nixosModules.framework-16-7040-amd
-    /etc/nixos/hardware-configuration.nix
+    ./hardware-configuration.nix
     ../../nixos
   ];
 

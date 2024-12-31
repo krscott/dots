@@ -4,11 +4,15 @@ set -euo pipefail
 shopt -s failglob
 
 #SYSTEM=$(nix eval --impure --raw --expr 'builtins.currentSystem')
+HOSTNAME=${HOSTNAME:-$(hostname)}
 
 if grep '^NAME=NixOS$' /etc/os-release >/dev/null; then
 	# NixOS host
 
-	sudo nixos-rebuild switch --flake .#"$(hostname)" --impure
+	mkdir -p "hosts/$HOSTNAME"
+	cp "/etc/nixos/hardware-configuration.nix" "hosts/$HOSTNAME/hardware-configuration.nix"
+
+	sudo nixos-rebuild switch --flake ."#$HOSTNAME"
 
 else
 	# non-NixOS host with home-manager
