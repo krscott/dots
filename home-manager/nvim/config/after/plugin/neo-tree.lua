@@ -18,6 +18,15 @@ require('neo-tree').setup({
     }
 })
 
+-- Update on git change
+local events = require("neo-tree.events")
+events.fire_event(events.GIT_EVENT)
+
+-- Update on filesystem change
+-- require("neo-tree.sources.filesystem.commands").refresh(
+--     require("neo-tree.sources.manager").get_state("filesystem")
+-- )
+
 vim.fn.sign_define("DiagnosticSignError",
     { text = " ", texthl = "DiagnosticSignError" })
 vim.fn.sign_define("DiagnosticSignWarn",
