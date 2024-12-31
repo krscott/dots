@@ -40,8 +40,21 @@
     mantle = "#181825";
     crust = "#11111b";
   };
+
+  allacrityTheme = pkgs.fetchgit {
+    url = "https://github.com/catppuccin/alacritty.git";
+    sparseCheckout = ["*.toml"];
+    rev = "f6cb5a5c2b404cdaceaff193b9c52317f62c62f7";
+    hash = "sha256-vzfrwdWzhppzTzrEBSSW08wfOXLGc47T6azwKhYinsc=";
+  };
 in {
   programs.kitty.themeFile = "Catppuccin-Mocha";
+
+  programs.alacritty.settings = {
+    general.import = [
+      "${allacrityTheme}/catppuccin-mocha.toml"
+    ];
+  };
 
   programs.neovim.plugins = [
     pkgs.vimPlugins.catppuccin-nvim
