@@ -64,6 +64,7 @@
       ];
     };
     htop.enable = true;
+    pay-respects.enable = true;  # Press 'f' to fix last command
     ripgrep.enable = true;
     zoxide.enable = true;
   };
