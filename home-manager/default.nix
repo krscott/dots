@@ -13,6 +13,7 @@
     ./alacritty
     ./fonts
     ./git
+    ./gnome
     ./kitty
     ./nvim
     ./rclone

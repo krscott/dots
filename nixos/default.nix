@@ -1,5 +1,7 @@
 {...}: {
   imports = [
     ./games.nix
+
+    ./gnome
   ];
 }

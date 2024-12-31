@@ -38,6 +38,7 @@
               inherit fontSize;
               enable = true;
             };
+            gnome.enable = true;
             guiApps.enable = true;
             kitty = {
               inherit fontSize;
