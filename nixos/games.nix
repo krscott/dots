@@ -24,6 +24,8 @@ in {
       # heroic
       # bottles
 
+      discord
+
       (writeShellScriptBin "protonup" ''
         set -eu
         # Note: tilde (`~`) in quotes is a literal character

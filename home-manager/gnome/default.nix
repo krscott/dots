@@ -33,7 +33,7 @@ in {
           )
           ++ (
             if games.enable
-            then ["steam.desktop"]
+            then ["steam.desktop" "discord.desktop"]
             else []
           )
           ++ (
