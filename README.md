@@ -49,9 +49,20 @@ tldr for windows, add this to terminal settings json:
 
 ### Secrets setup
 
+First time setup:
 ```
 mkdir -p ~/.config/sops/age
+# Generate new key
 nix shell nixpkgs#age -c age-keygen -o ~/.config/sops/age/keys.txt
-# (Paste key into .sops.yaml)
+# Print public key (Copy into .sops.yaml keys)
+nix shell nixpkgs#age -c age-keygen -y ~/.config/sops/age/keys.txt
+# Edit secrets
 sops secrets/secrets.yaml
 ```
+
+Existing keys
+```
+mkdir -p ~/.config/sops/age
+# Copy keys.txt to ~/.config/sops/age
+```
+

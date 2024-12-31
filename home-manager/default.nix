@@ -15,6 +15,7 @@
     ./git
     ./kitty
     ./nvim
+    ./rclone
     ./starship
     ./tmux
     ./zsh

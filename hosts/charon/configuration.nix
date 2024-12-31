@@ -31,7 +31,10 @@
         ../../home-manager
         {
           krs = {
+            # cloudAi.enable = true;
             kitty.enable = true;
+            secrets.enable = true;
+            rclone.enable = true;
           };
         }
       ];
