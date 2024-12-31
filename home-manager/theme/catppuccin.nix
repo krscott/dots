@@ -1,6 +1,7 @@
 {
-  pkgs,
   config,
+  lib,
+  pkgs,
   ...
 }: let
   nc = import ../fonts/nerd-char.nix {inherit config;};
@@ -40,17 +41,18 @@
     mantle = "#181825";
     crust = "#11111b";
   };
-
-  allacrityTheme = pkgs.fetchgit {
-    url = "https://github.com/catppuccin/alacritty.git";
-    sparseCheckout = ["*.toml"];
-    rev = "f6cb5a5c2b404cdaceaff193b9c52317f62c62f7";
-    hash = "sha256-vzfrwdWzhppzTzrEBSSW08wfOXLGc47T6azwKhYinsc=";
-  };
 in {
   programs.kitty.themeFile = "Catppuccin-Mocha";
 
-  programs.alacritty.settings = {
+  programs.alacritty.settings = let
+    allacrityTheme = pkgs.fetchFromGitHub {
+      owner = "catppuccin";
+      repo = "alacritty";
+      rev = "f6cb5a5c2b404cdaceaff193b9c52317f62c62f7";
+      hash = "sha256-vzfrwdWzhppzTzrEBSSW08wfOXLGc47T6azwKhYinsc=";
+      sparseCheckout = ["*.toml"];
+    };
+  in {
     general.import = [
       "${allacrityTheme}/catppuccin-mocha.toml"
     ];
@@ -62,6 +64,8 @@ in {
 
   programs.starship.settings = {
     palette = "catppuccin_mocha";
+
+    # Map to standard colors so styles don't need to know theme color names
     palettes.catppuccin_mocha = {
       black = color.base;
       red = color.red;
@@ -108,6 +112,7 @@ in {
           repo = "bat";
           rev = "d3feec47b16a8e99eabb34cdfbaa115541d374fc";
           sha256 = "s0CHTihXlBMCKmbBBb8dUhfgOOQu9PBCQ+uviy7o47w=";
+          sparseCheckout = ["themes"];
         };
         file = "themes/Catppuccin Mocha.tmTheme";
       };
@@ -133,11 +138,7 @@ in {
     "selected-bg" = color.surface1;
   };
 
-  home.packages = with pkgs; [
-    vivid
-  ];
-
   programs.zsh.initExtra = ''
-    export LS_COLORS="$(vivid generate catppuccin-mocha)";
+    export LS_COLORS="$(${lib.getExe pkgs.vivid} generate catppuccin-mocha)";
   '';
 }
