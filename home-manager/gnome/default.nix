@@ -52,7 +52,7 @@ in {
         # clock-show-seconds = true;
         clock-show-weekday = true;
         color-scheme = "prefer-dark";
-        enable-hot-corners = true;
+        enable-hot-corners = false;
         font-antialiasing = "grayscale";
         font-hinting = "slight";
         gtk-theme = "Nordic";
