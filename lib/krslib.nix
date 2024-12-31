@@ -41,4 +41,9 @@
   in {
     home.file.".local/share/applications/${name}.desktop".text = builtins.readFile "${item}/share/applications/${name}.desktop";
   };
+
+  appendIf = cond: x:
+    if cond
+    then [x]
+    else [];
 }

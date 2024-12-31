@@ -7,16 +7,18 @@
   pkgs,
   inputs,
   ...
-}: {
+}: let
+  myNixosSettings = {
+    games.enable = true;
+  };
+in {
   imports = [
     inputs.nixos-hardware.nixosModules.framework-16-7040-amd
     ./hardware-configuration.nix
     ../../nixos
   ];
 
-  krs = {
-    games.enable = true;
-  };
+  krs = myNixosSettings;
 
   # Enables drivers for both X11 and Wayland
   # services.xserver.videoDrivers = ["amdgpu"];
@@ -32,21 +34,23 @@
         {
           krs = let
             fontSize = 13;
-          in {
-            # cloudAi.enable = true;
-            alacritty = {
-              inherit fontSize;
-              enable = true;
-            };
-            gnome.enable = true;
-            guiApps.enable = true;
-            kitty = {
-              inherit fontSize;
-              enable = true;
-            };
-            rclone.enable = true;
-            secrets.enable = true;
-          };
+          in
+            {
+              # cloudAi.enable = true;
+              alacritty = {
+                inherit fontSize;
+                enable = true;
+              };
+              gnome.enable = true;
+              guiApps.enable = true;
+              kitty = {
+                inherit fontSize;
+                enable = true;
+              };
+              rclone.enable = true;
+              secrets.enable = true;
+            }
+            // myNixosSettings;
         }
       ];
     };
