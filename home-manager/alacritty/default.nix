@@ -9,7 +9,7 @@ in {
   options.krs.alacritty = {
     enable = krslib.mkEnableOptionFalse "alacritty";
     # Font must also be added to fonts.nix
-    fontName = krslib.mkStrOption "Font Name" "Iosevka Nerd Font";
+    fontName = krslib.mkStrOption "Font Name" "IosevkaTerm Nerd Font";
     fontSize = krslib.mkIntOption "Font Size" 16;
   };
 

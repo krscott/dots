@@ -30,12 +30,21 @@
         ../../users/kris.nix
         ../../home-manager
         {
-          krs = {
+          krs = let
+            fontSize = 13;
+          in {
             # cloudAi.enable = true;
+            alacritty = {
+              inherit fontSize;
+              enable = true;
+            };
             guiApps.enable = true;
-            kitty.enable = true;
-            secrets.enable = true;
+            kitty = {
+              inherit fontSize;
+              enable = true;
+            };
             rclone.enable = true;
+            secrets.enable = true;
           };
         }
       ];
