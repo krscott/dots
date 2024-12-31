@@ -22,6 +22,11 @@ in {
           "clipboard-indicator@tudmotu.com"
         ];
       };
+
+      "org/gnome/desktop/wm/preferences" = {
+        button-layout = "appmenu:minimize,maximize,close";
+        resize-with-right-button = "true";
+      };
     };
   };
 }
