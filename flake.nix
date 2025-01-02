@@ -1,9 +1,12 @@
 {
   description = "Kris's Nix Config";
 
+  # TODO: nixConfig experimental-features, cachix
+
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    stylix.url = "github:danth/stylix";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -30,8 +33,19 @@
     nixpkgs,
     home-manager,
     nixgl,
+    stylix,
     ...
   } @ inputs: let
+    mkNixos = config:
+      nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs;};
+        modules = [
+          home-manager.nixosModules.default
+          stylix.nixosModules.stylix
+          config
+        ];
+      };
+
     mkHome = {
       system,
       modules,
@@ -43,26 +57,17 @@
     in
       home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        extraSpecialArgs = {
-          inherit inputs;
-        };
+        extraSpecialArgs = {inherit inputs;};
         modules =
-          modules
-          ++ [
-            {
-              nix.package = pkgs.nix;
-            }
-          ];
+          [
+            {nix.package = pkgs.nix;}
+            stylix.homeManagerModules.stylix
+          ]
+          ++ modules;
       };
   in {
     nixosConfigurations = {
-      charon = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
-        modules = [
-          ./hosts/charon/configuration.nix
-          home-manager.nixosModules.default
-        ];
-      };
+      "charon" = mkNixos ./hosts/charon/configuration.nix;
     };
 
     homeConfigurations = {

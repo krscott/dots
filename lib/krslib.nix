@@ -27,6 +27,19 @@
       type = lib.types.int;
     };
 
+  mkFloatOption = description: default:
+    lib.mkOption {
+      inherit description default;
+      type = lib.types.float;
+    };
+
+  mkEnumOption = description: values:
+    lib.mkOption {
+      inherit description;
+      type = lib.types.enum values;
+      # default = builtins.elemAt values 0;
+    };
+
   mkAppShortcut = {
     pkgs,
     name,

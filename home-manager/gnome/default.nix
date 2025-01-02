@@ -55,7 +55,7 @@ in {
         enable-hot-corners = false;
         font-antialiasing = "grayscale";
         font-hinting = "slight";
-        gtk-theme = "Nordic";
+        gtk-theme = lib.mkDefault "Nordic";
         toolkit-accessibility = true;
       };
 

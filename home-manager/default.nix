@@ -1,5 +1,7 @@
 {pkgs, ...}: {
   imports = [
+    ../common
+
     ./cloud-ai.nix
     ./core.nix
     ./gui.nix
@@ -9,7 +11,7 @@
     ./system-settings.nix
     ./wsl.nix
 
-    ./theme/catppuccin.nix
+    # ./theme/catppuccin.nix
 
     ./alacritty
     ./fonts
@@ -64,7 +66,7 @@
       ];
     };
     htop.enable = true;
-    pay-respects.enable = true;  # Press 'f' to fix last command
+    pay-respects.enable = true; # Press 'f' to fix last command
     ripgrep.enable = true;
     zoxide.enable = true;
   };
@@ -82,5 +84,9 @@
   home.sessionVariables = {
     MANPAGER = "sh -c 'col -bx | bat -l man -p'";
     MANROFFOPT = "-c";
+  };
+
+  stylix.targets = {
+    firefox.enable = false;
   };
 }

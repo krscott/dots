@@ -1,4 +1,8 @@
 {pkgs, ...}: {
+  imports = [
+    ./style.nix
+  ];
+
   programs.tmux = {
     enable = true;
     shell = "${pkgs.zsh}/bin/zsh";

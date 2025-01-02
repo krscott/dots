@@ -8,8 +8,9 @@
   inputs,
   ...
 }: let
-  myNixosSettings = {
+  krsCommon = {
     games.enable = true;
+    stylix.enable = true;
   };
 in {
   imports = [
@@ -18,12 +19,7 @@ in {
     ../../nixos
   ];
 
-  krs = myNixosSettings;
-
-  # Enables drivers for both X11 and Wayland
-  # services.xserver.videoDrivers = ["amdgpu"];
-
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  krs = krsCommon;
 
   home-manager = {
     extraSpecialArgs = {inherit inputs;};
@@ -50,11 +46,17 @@ in {
               rclone.enable = true;
               secrets.enable = true;
             }
-            // myNixosSettings;
+            // krsCommon;
         }
       ];
     };
   };
+
+  nix.settings.experimental-features = ["nix-command" "flakes"];
+
+  # Covered by nixos-hardware
+  # Enables drivers for both X11 and Wayland
+  # services.xserver.videoDrivers = ["amdgpu"];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;

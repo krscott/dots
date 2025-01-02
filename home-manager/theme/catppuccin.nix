@@ -1,3 +1,4 @@
+# TODO(kscott): switch to https://github.com/catppuccin/nix
 {
   config,
   lib,

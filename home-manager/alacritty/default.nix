@@ -22,8 +22,8 @@ in {
           "${./alacritty.toml}"
         ];
         font = {
-          size = config.krs.alacritty.fontSize;
-          normal.family = config.krs.alacritty.fontName;
+          size = lib.mkDefault config.krs.alacritty.fontSize;
+          normal.family = lib.mkDefault config.krs.alacritty.fontName;
         };
       };
     };

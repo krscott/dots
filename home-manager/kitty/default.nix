@@ -27,8 +27,8 @@ in {
         if config.krs.kitty.useSystem
         then pkgs.emptyDirectory
         else config.krs.nixgl.wrap pkgs.kitty;
-      font.name = config.krs.kitty.fontName;
-      font.size = config.krs.kitty.fontSize;
+      font.name = lib.mkDefault config.krs.kitty.fontName;
+      font.size = lib.mkDefault config.krs.kitty.fontSize;
       extraConfig = builtins.readFile ./kitty.conf;
     };
   };
