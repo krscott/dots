@@ -23,5 +23,13 @@ in {
 
       opacity = krslib.mkFloatOption "Terminal opacity" 0.85;
     };
+
+    style = {
+      type = lib.mkOption {
+        description = "Style enum";
+        type = lib.types.enum ["none" "stylix" "catppucin"];
+        default = "catppucin";
+      };
+    };
   };
 }

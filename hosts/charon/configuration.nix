@@ -10,7 +10,7 @@
 }: let
   krsCommon = {
     games.enable = true;
-    stylix.enable = true;
+    style.type = "stylix";
   };
 in {
   imports = [

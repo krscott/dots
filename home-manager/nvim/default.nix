@@ -51,6 +51,7 @@
 in {
   imports = [
     ./nvim-cloud-ai.nix
+    ./nvim-stylix.nix
   ];
 
   home.packages = [
@@ -69,9 +70,7 @@ in {
 
       # Nav/UI
       harpoon
-      mini-base16
       telescope-nvim
-      transparent-nvim
       trouble-nvim
       undotree
       vim-tmux-navigator
