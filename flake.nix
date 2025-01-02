@@ -7,6 +7,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     stylix.url = "github:danth/stylix";
+    catppuccin.url = "github:catppuccin/nix";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -34,6 +35,7 @@
     home-manager,
     nixgl,
     stylix,
+    catppuccin,
     ...
   } @ inputs: let
     mkNixos = config:
@@ -42,6 +44,7 @@
         modules = [
           home-manager.nixosModules.default
           stylix.nixosModules.stylix
+          catppuccin.nixosModules.catppuccin
           config
         ];
       };

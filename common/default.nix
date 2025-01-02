@@ -7,6 +7,7 @@
 in {
   imports = [
     ./stylix
+    ./catppuccin
   ];
 
   options.krs = {
@@ -27,8 +28,8 @@ in {
     style = {
       type = lib.mkOption {
         description = "Style enum";
-        type = lib.types.enum ["none" "stylix" "catppucin"];
-        default = "catppucin";
+        type = lib.types.enum ["none" "stylix" "catppuccin"];
+        default = "catppuccin";
       };
     };
   };

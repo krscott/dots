@@ -14,6 +14,7 @@
     # ./theme/catppuccin.nix
 
     ./alacritty
+    ./catppuccin
     ./fonts
     ./git
     ./gnome
