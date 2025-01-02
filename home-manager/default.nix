@@ -6,7 +6,6 @@
     ./core.nix
     ./gui.nix
     ./nixgl.nix
-    ./nixos-settings-mirror.nix
     ./secrets.nix
     ./system-settings.nix
     ./wsl.nix

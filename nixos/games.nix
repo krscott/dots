@@ -3,13 +3,7 @@
   lib,
   pkgs,
   ...
-}: let
-  krslib = import ../lib/krslib.nix {inherit lib;};
-in {
-  options.krs = {
-    games.enable = krslib.mkEnableOptionFalse "games";
-  };
-
+}: {
   config = lib.mkIf config.krs.games.enable {
     # nixpkgs.overlays = [
     #   # Temporary heroic electron fix
