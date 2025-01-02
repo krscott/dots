@@ -83,8 +83,4 @@
     MANPAGER = "sh -c 'col -bx | bat -l man -p'";
     MANROFFOPT = "-c";
   };
-
-  stylix.targets = {
-    firefox.enable = false;
-  };
 }

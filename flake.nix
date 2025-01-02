@@ -64,7 +64,6 @@
         modules =
           [
             {nix.package = pkgs.nix;}
-            stylix.homeManagerModules.stylix
           ]
           ++ modules;
       };
