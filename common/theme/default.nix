@@ -31,6 +31,15 @@ in {
         type = lib.types.enum ["none" "stylix" "catppuccin"];
         default = "catppuccin";
       };
+
+      wallpaper = lib.mkOption {
+        description = "Wallpaper image";
+        default = pkgs.fetchurl {
+          # https://www.pexels.com/photo/green-and-white-lighted-tunnel-10753976/
+          url = "https://images.pexels.com/photos/10753976/pexels-photo-10753976.jpeg";
+          sha256 = "sha256-aFCLon6DO9JEvKXDkPZhB4FOHkbUyrT57rt9eOr/I2M=";
+        };
+      };
     };
   };
 }

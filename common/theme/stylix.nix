@@ -11,13 +11,9 @@ in {
       enable = true;
       polarity = "dark";
 
-      image = pkgs.fetchurl {
-        # https://www.pexels.com/photo/green-and-white-lighted-tunnel-10753976/
-        url = "https://images.pexels.com/photos/10753976/pexels-photo-10753976.jpeg";
-        sha256 = "sha256-aFCLon6DO9JEvKXDkPZhB4FOHkbUyrT57rt9eOr/I2M=";
-      };
+      image = config.krs.theme.wallpaper;
 
-      base16Scheme = "${pkgs.base16-schemes}/share/themes/blueish.yaml";
+      base16Scheme = lib.mkDefault "${pkgs.base16-schemes}/share/themes/blueish.yaml";
 
       fonts = {
         serif = {
