@@ -11,8 +11,6 @@
     ./system-settings.nix
     ./wsl.nix
 
-    # ./theme/catppuccin.nix
-
     ./alacritty
     ./catppuccin
     ./fonts
