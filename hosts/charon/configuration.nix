@@ -10,7 +10,7 @@
 }: let
   krsCommon = {
     games.enable = true;
-    # theme.type = "stylix";
+    theme.type = "stylix";
   };
 in {
   imports = [
