@@ -12,7 +12,6 @@
     ./wsl.nix
 
     ./alacritty
-    ./catppuccin
     ./fonts
     ./git
     ./gnome
@@ -20,6 +19,7 @@
     ./nvim
     ./rclone
     ./starship
+    ./theme
     ./tmux
     ./zsh
 

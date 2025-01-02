@@ -6,7 +6,7 @@
 }: let
   inherit (config.krs) terminal;
 in {
-  config = lib.mkIf (config.krs.style.type == "stylix") {
+  config = lib.mkIf (config.krs.theme.type == "stylix") {
     stylix = {
       enable = true;
       polarity = "dark";

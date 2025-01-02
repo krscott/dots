@@ -4,7 +4,7 @@
   config,
   ...
 }: {
-  config = lib.mkIf (config.krs.style.type == "stylix") {
+  config = lib.mkIf (config.krs.theme.type == "stylix") {
     home.sessionVariables = with config.lib.stylix.colors; {
       STYLIX_BASE00 = "#${base00}";
       STYLIX_BASE01 = "#${base01}";

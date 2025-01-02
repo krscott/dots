@@ -10,7 +10,7 @@ in {
     catppuccin.tmux.enable = false;
 
     programs.tmux.plugins =
-      if (config.krs.style.type == "catppuccin")
+      if (config.krs.theme.type == "catppuccin")
       then [
         {
           plugin = pkgs.tmuxPlugins.catppuccin;

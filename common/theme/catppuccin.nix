@@ -3,7 +3,7 @@
   lib,
   ...
 }: {
-  config = lib.mkIf (config.krs.style.type == "catppuccin") {
+  config = lib.mkIf (config.krs.theme.type == "catppuccin") {
     catppuccin = {
       enable = true;
       flavor = "mocha";
