@@ -97,9 +97,10 @@ in {
       (import ../tmux/tmux-battery.nix {inherit pkgs;}) # load after catppuccin
     ];
 
-    # zsh - catppuccin-nix only covers syntax highlighting?
-    # programs.zsh.initExtra = ''
-    #   export LS_COLORS="$(${lib.getExe pkgs.vivid} generate catppuccin-mocha)";
-    # '';
+    # zsh - ccatppuccin-nix has an issue with I-cursor highlighting
+    catppuccin.zsh-syntax-highlighting.enable = false;
+    programs.zsh.initExtra = ''
+      export LS_COLORS="$(${lib.getExe pkgs.vivid} generate catppuccin-mocha)";
+    '';
   };
 }
