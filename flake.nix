@@ -81,7 +81,6 @@
           ./users/kris.nix
           {
             krs = {
-              cloudAi.enable = true;
               kitty.enable = true;
               nixgl.enable = true;
               system.hasBattery = false;
