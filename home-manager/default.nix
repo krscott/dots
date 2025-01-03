@@ -27,7 +27,7 @@
 
   home.packages = with pkgs; [
     # CLI
-    neofetch
+    fastfetch
     tldr
     dust # du replacement
     jq
