@@ -55,9 +55,9 @@
     home.file.".local/share/applications/${name}.desktop".text = builtins.readFile "${item}/share/applications/${name}.desktop";
   };
 
-  appendIf = cond: x:
+  mkArrIf = cond: arr:
     if cond
-    then [x]
+    then arr
     else [];
 
   getOptStr = a: b:
@@ -69,4 +69,11 @@
     if a >= 0
     then a
     else b;
+
+  mapAttrNames = f: list:
+    builtins.listToAttrs (builtins.map (name: {
+        inherit name;
+        value = f name;
+      })
+      list);
 }

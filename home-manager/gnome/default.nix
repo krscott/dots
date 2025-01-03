@@ -5,12 +5,9 @@
   ...
 }: let
   krslib = import ../../lib/krslib.nix {inherit lib;};
-
-  mkArrIf = cond: arr:
-    if cond
-    then arr
-    else [];
+  inherit (krslib) mkArrIf;
 in {
+  # TODO(kscott): Move options to common
   options.krs = {
     gnome.enable = krslib.mkEnableOptionFalse "GNOME";
   };
