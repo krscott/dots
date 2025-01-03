@@ -5,6 +5,7 @@
     ./flatpak.nix
     ./games.nix
     ./gnome.nix
+    ./virtualization.nix
     ./users.nix
   ];
 

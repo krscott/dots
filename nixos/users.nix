@@ -6,7 +6,11 @@
   krslib = import ../lib/krslib.nix {inherit lib;};
   eachMainUser = f: krslib.mapAttrNames f config.krs.users.main.names;
 
-  commonOptions = lib.removeAttrs config.krs ["users"];
+  # Get all options that are also custom home-manager options
+  commonOptions = lib.removeAttrs config.krs [
+    "users"
+    "vm"
+  ];
 in {
   options.krs.users = {
     main = {

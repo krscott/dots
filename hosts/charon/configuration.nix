@@ -7,23 +7,9 @@
   imports = [
     inputs.nixos-hardware.nixosModules.framework-16-7040-amd
     ./hardware-configuration.nix
+    ../styx/shared.nix
     ../../nixos
   ];
-
-  krs = {
-    flatpak.enable = true;
-    games.enable = true;
-    theme.type = "stylix";
-
-    users.main.options = {
-      alacritty.enable = true;
-      gnome.enable = true;
-      guiApps.enable = true;
-      kitty.enable = true;
-      rclone.enable = true;
-      secrets.enable = true;
-    };
-  };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
