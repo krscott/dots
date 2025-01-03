@@ -84,3 +84,8 @@ mkdir -p ~/.config/sops/age
 # Copy keys.txt to ~/.config/sops/age
 ```
 
+Run init scripts
+```
+krs_rclone_init
+```
+
