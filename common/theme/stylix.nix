@@ -13,7 +13,7 @@ in {
 
       image = config.krs.theme.wallpaper;
 
-      base16Scheme = lib.mkDefault "${pkgs.base16-schemes}/share/themes/blueish.yaml";
+      base16Scheme = "${pkgs.base16-schemes}/share/themes/blueish.yaml";
 
       fonts = {
         serif = {

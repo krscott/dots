@@ -52,20 +52,14 @@
     mkHome = {
       system,
       modules,
-    }: let
-      pkgs = import nixpkgs {
-        inherit system;
-        overlays = [nixgl.overlay];
-      };
-    in
+    }:
       home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
+        pkgs = import nixpkgs {
+          inherit system;
+          overlays = [nixgl.overlay];
+        };
         extraSpecialArgs = {inherit inputs;};
-        modules =
-          [
-            {nix.package = pkgs.nix;}
-          ]
-          ++ modules;
+        modules = [./home-manager/hm-standalone.nix] ++ modules;
       };
   in {
     nixosConfigurations = {
@@ -77,7 +71,6 @@
         system = "x86_64-linux";
         modules = [
           ./hosts/styx/styx-home.nix
-          ./home-manager
           ./users/kris.nix
           {
             krs = {
@@ -92,7 +85,6 @@
       "kris@galatea" = mkHome {
         system = "x86_64-linux";
         modules = [
-          ./home-manager
           ./users/kris.nix
           {
             krs = {
@@ -105,12 +97,9 @@
         ];
       };
 
-      "clear" = mkHome {
-        system = "x86_64-linux";
-        modules = [
-          ./home-manager/core.nix
-          ./users/kris.nix
-        ];
+      "clear" = home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs {system = "x86_64-linux";};
+        modules = [./home-manager/core.nix];
       };
     };
 
