@@ -1,6 +1,5 @@
 # https://alacritty.org/config-alacritty.html
 
 [window]
-opacity = 0.85
 blur = true
 decorations = "None"

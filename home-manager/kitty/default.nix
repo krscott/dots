@@ -25,6 +25,7 @@ in {
         else config.krs.nixgl.wrap pkgs.kitty;
       font.name = lib.mkDefault config.krs.terminal.font.name;
       font.size = lib.mkDefault config.krs.terminal.font.size;
+      settings.background_opacity = lib.mkDefault config.krs.terminal.opacity;
       extraConfig = builtins.readFile ./kitty.conf;
     };
   };

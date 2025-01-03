@@ -22,6 +22,7 @@ in {
           size = lib.mkDefault config.krs.terminal.font.size;
           normal.family = lib.mkDefault config.krs.terminal.font.name;
         };
+        window.opacity = lib.mkDefault config.krs.terminal.opacity;
       };
     };
   };
