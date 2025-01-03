@@ -63,6 +63,7 @@
       };
   in {
     nixosConfigurations = {
+      "styx" = mkNixos ./hosts/styx/configuration.nix;
       "charon" = mkNixos ./hosts/charon/configuration.nix;
     };
 
