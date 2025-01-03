@@ -22,14 +22,29 @@ To derive a config from this config (like for work or something), start with
 
 Depending on the system, some other manual setup is required.
 
-### Linux Keyboard Shortcuts
+### NixOS setup
 
-Add these to custom shortcuts
+Open nix shell with tools
+```
+nix-shell -p vim git
+```
 
+Generate SSH key
 ```
-# Ctrl+Alt+K - Start kitty in tmux
-kitty -e tmux
+ssh-keygen -t ed25519 -C "your_email@example.com"
+cat ~/.ssh/id_ed25519.pub
 ```
+
+Add SSH key to github: https://github.com/settings/ssh/new
+
+Clone and run setup
+```
+ssh-add
+git clone git@github.com:krscott/nixcfg.git
+cd nixcfg
+. ./nixos-setup.sh
+```
+
 
 ### Enter key fixes
 
