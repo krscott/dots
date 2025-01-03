@@ -10,6 +10,7 @@
   krsCommon = {
     games.enable = true;
     theme.type = "stylix";
+    flatpak.enable = true;
   };
 in {
   imports = [
@@ -27,15 +28,15 @@ in {
         ../../home-manager
         {
           krs =
-            {
+            krsCommon
+            // {
               alacritty.enable = true;
               gnome.enable = true;
               guiApps.enable = true;
               kitty.enable = true;
               rclone.enable = true;
               secrets.enable = true;
-            }
-            // krsCommon;
+            };
 
           # programs.kitty.font.name = lib.mkForce "FantasqueSansM Nerd Font";
         }

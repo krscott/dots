@@ -4,6 +4,7 @@
 
     ./cloud-ai.nix
     ./core.nix
+    ./flatpak.nix
     ./gui.nix
     ./nixgl.nix
     ./secrets.nix

@@ -5,6 +5,11 @@
   ...
 }: let
   krslib = import ../../lib/krslib.nix {inherit lib;};
+
+  mkArrIf = cond: arr:
+    if cond
+    then arr
+    else [];
 in {
   options.krs = {
     gnome.enable = krslib.mkEnableOptionFalse "GNOME";
@@ -23,7 +28,14 @@ in {
         enabled-extensions = [
           "clipboard-indicator@tudmotu.com"
         ];
-        favorite-apps = with config.krs; (["firefox.desktop"]
+
+        # Command to list currently pinned apps:
+        #     dconf read /org/gnome/shell/favorite-apps
+        favorite-apps = with config.krs;
+          [
+            "firefox.desktop"
+            "org.gnome.Nautilus.desktop"
+          ]
           ++ (
             if kitty.enable
             then ["kitty.desktop"]
@@ -31,16 +43,12 @@ in {
             then ["Alacritty.desktop"]
             else []
           )
-          ++ (
-            if games.enable
-            then ["steam.desktop" "discord.desktop"]
-            else []
-          )
-          ++ (
-            if guiApps.enable
-            then ["obsidian.desktop" "keepass.desktop"]
-            else []
-          ));
+          ++ (mkArrIf games.enable ["steam.desktop" "discord.desktop"])
+          ++ (mkArrIf guiApps.enable ["obsidian.desktop"])
+          ++ (mkArrIf flatpak.enable [
+            "org.keepassxc.KeePassXC.desktop"
+            "com.spotify.Client.desktop"
+          ]);
       };
 
       "org/gnome/desktop/wm/preferences" = {

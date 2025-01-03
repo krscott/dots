@@ -30,3 +30,7 @@ fi
 if [ "${TERM_PROGRAM:-}" = "tmux" ]; then
     tmux source-file ~/.config/tmux/tmux.conf
 fi
+
+if command -v krs_flatpak_install >/dev/null; then
+    krs_flatpak_install
+fi
