@@ -22,6 +22,8 @@ in {
 
     dconf.settings = {
       # Inspiration: https://heywoodlh.io/nixos-gnome-settings-and-keyboard-shortcuts
+      # Command to dump user-altered keys:
+      #     dconf dump /
 
       "org/gnome/shell" = {
         disable-user-extensions = false;
@@ -71,6 +73,10 @@ in {
         accel-profile = "flat";
       };
 
+      "org/gnome/desktop/session" = {
+        idle-delay = lib.hm.gvariant.mkUint32 0; # Disable screen blank
+      };
+
       "org/gnome/mutter" = {
         edge-tiling = true;
       };
@@ -98,6 +104,11 @@ in {
           then "alacritty -e tmux"
           else "kgx";
         binding = "<Ctrl><Alt>t";
+      };
+
+      "org/gnome/settings-daemon/plugins/power" = {
+        power-button-action = "interactive"; # shutdown on pusing power button
+        sleep-inactive-ac-timeout = 7200; # Sleep after idle for 2 hrs
       };
     };
   };
