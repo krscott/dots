@@ -9,10 +9,6 @@ in {
   options.krs.kitty = {
     enable = krslib.mkEnableOptionFalse "kitty";
     useSystem = krslib.mkEnableOptionFalse "using system kitty";
-    # Font must also be added to fonts.nix
-    # fontName = krslib.mkStrOption "Font Name" "FantasqueSansM Nerd Font";
-    fontName = krslib.mkStrOption "Font Name" "Iosevka Nerd Font";
-    fontSize = krslib.mkIntOption "Font Size" 16;
   };
 
   config = lib.mkIf config.krs.kitty.enable {
@@ -27,8 +23,8 @@ in {
         if config.krs.kitty.useSystem
         then pkgs.emptyDirectory
         else config.krs.nixgl.wrap pkgs.kitty;
-      font.name = lib.mkDefault config.krs.kitty.fontName;
-      font.size = lib.mkDefault config.krs.kitty.fontSize;
+      font.name = lib.mkDefault config.krs.terminal.font.name;
+      font.size = lib.mkDefault config.krs.terminal.font.size;
       extraConfig = builtins.readFile ./kitty.conf;
     };
   };

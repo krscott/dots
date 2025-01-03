@@ -28,25 +28,18 @@ in {
         ../../users/kris.nix
         ../../home-manager
         {
-          krs = let
-            fontSize = 13;
-          in
+          krs =
             {
-              # cloudAi.enable = true;
-              alacritty = {
-                inherit fontSize;
-                enable = true;
-              };
+              alacritty.enable = true;
               gnome.enable = true;
               guiApps.enable = true;
-              kitty = {
-                inherit fontSize;
-                enable = true;
-              };
+              kitty.enable = true;
               rclone.enable = true;
               secrets.enable = true;
             }
             // krsCommon;
+
+          # programs.kitty.font.name = lib.mkForce "FantasqueSansM Nerd Font";
         }
       ];
     };

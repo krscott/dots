@@ -59,4 +59,14 @@
     if cond
     then [x]
     else [];
+
+  getOptStr = a: b:
+    if a != ""
+    then a
+    else b;
+
+  getOptPosInt = a: b:
+    if a >= 0
+    then a
+    else b;
 }
