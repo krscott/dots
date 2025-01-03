@@ -42,9 +42,12 @@ Clone and run setup
 ssh-add
 git clone git@github.com:krscott/nixcfg.git
 cd nixcfg
-. ./nixos-setup.sh
+./nixos-setup.sh
 ```
 
+Edit new configuration:
+- Setup videoDrivers
+- Add home-manager module
 
 ### Enter key fixes
 
