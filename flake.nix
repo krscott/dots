@@ -72,6 +72,11 @@
         ./hosts/galatea/home.nix
       ];
 
+      "kris@win11-vm" = mkHome "x86_64-linux" [
+        ./users/kris.nix
+        ./hosts/galatea/home.nix
+      ];
+
       "clear" = mkHome "x86_64-linux" [
         ./home-manager/core.nix
       ];
