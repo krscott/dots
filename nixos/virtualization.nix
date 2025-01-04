@@ -1,10 +1,12 @@
 {
   config,
+  inputs,
   lib,
   pkgs,
   ...
 }: let
   krslib = import ../lib/krslib.nix {inherit lib;};
+  pkgs-stable = inputs.nixpkgs-stable.legacyPackages.${pkgs.system};
 in {
   options.krs.vm = {
     enable = krslib.mkEnableOptionFalse "vm";
@@ -16,7 +18,10 @@ in {
   };
 
   config = lib.mkIf config.krs.vm.enable {
-    programs.virt-manager.enable = true;
+    programs.virt-manager = {
+      enable = true;
+      package = pkgs-stable.virt-manager;
+    };
 
     programs.dconf.enable = true;
 

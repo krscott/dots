@@ -89,3 +89,9 @@ Run init scripts
 krs_rclone_init
 ```
 
+### Virtualization
+
+Bypass Win11 setup sign-in: https://www.tomshardware.com/how-to/install-windows-11-without-microsoft-account
+
+
+

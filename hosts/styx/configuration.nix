@@ -8,7 +8,7 @@
   ];
 
   krs = {
-    # vm.enable = true;
+    vm.enable = true;
     users.main.options.system.hasBattery = false;
   };
 

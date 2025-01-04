@@ -17,7 +17,7 @@ fi
 nix flake update
 
 if is_git_dirty; then
-	./switch.sh
+	./switch.sh --no-warn-dirty
 	git add flake.lock
 	git commit -m "Update flake.lock"
 else
