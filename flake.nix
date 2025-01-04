@@ -74,7 +74,7 @@
 
       "kris@win11-vm" = mkHome "x86_64-linux" [
         ./users/kris.nix
-        ./hosts/galatea/home.nix
+        ./hosts/win11-vm/home.nix
       ];
 
       "clear" = mkHome "x86_64-linux" [

@@ -5,4 +5,8 @@
     ../common/wsl-home.nix
     ../../home-manager/hm-standalone.nix
   ];
+
+  krs = {
+    system.hasBattery = false;
+  };
 }
